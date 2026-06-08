@@ -188,6 +188,22 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
     </div>
   </div>
 
+  <!-- 待确认开团 -->
+  <div id="leaderPending" style="display:none;background:#fff8e1;border:1.5px dashed #ffb300;border-radius:12px;padding:16px;margin-bottom:14px;text-align:center;">
+    <div style="font-size:36px;">📱</div>
+    <div style="font-size:15px;font-weight:600;color:#e65100;margin:6px 0;">你还没有开团</div>
+    <div style="font-size:13px;color:#888;margin-bottom:12px;">付款¥39后联系管理员确认开团</div>
+    <div style="background:#fff;border-radius:8px;padding:12px;text-align:left;">
+      <div style="font-size:12px;color:#333;margin-bottom:6px;"><strong>👉 两步开团：</strong></div>
+      <div style="font-size:12px;color:#555;line-height:1.8;">
+        1. 添加微信：<strong style="color:#1a237e;">hongchunyu042896</strong><br>
+        2. 发消息"开团" → 客服发付款码 → 付¥39<br>
+        3. 付款截图发给客服 → 客服确认 → 开团成功 🎉
+      </div>
+    </div>
+    <button class="btn btn-sm btn-outline" onclick="copyWechat()" style="margin-top:12px;">📋 复制微信号去付款</button>
+  </div>
+
   <div id="leaderResult" style="display:none;">
     <!-- 团长进度卡 -->
     <div class="progress-card" style="background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06);text-align:center;">
@@ -310,11 +326,12 @@ function queryMyGroup() {
   const group = groups.find(g => g.leader === name);
 
   if (!group) {
-    showToast('未找到你的拼团记录，确认昵称是否正确或联系管理员');
+    document.getElementById('leaderPending').style.display = 'block';
+    document.getElementById('leaderResult').style.display = 'none';
     return;
   }
 
-  document.getElementById('leaderResult').style.display = 'block';
+  document.getElementById('leaderPending').style.display = 'none';
 
   // 进度
   document.getElementById('leaderCountDisplay').textContent = group.count + '人';
