@@ -119,8 +119,10 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 
   <button class="btn btn-primary" onclick="showPage('page-how')">🚀 我要当团长</button>
 
-  <div style="margin-top:10px;text-align:center;">
-    <a href="#" onclick="showPage('page-admin');return false;" style="font-size:12px;color:#999;">团长/管理员入口→</a>
+  <div style="margin-top:10px;text-align:center;display:flex;gap:8px;justify-content:center;">
+    <a href="#" onclick="showPage('page-leader');return false;" style="font-size:12px;color:#1a237e;">👑 团长查进度</a>
+    <span style="color:#ddd;">|</span>
+    <a href="#" onclick="showPage('page-admin');return false;" style="font-size:12px;color:#999;">管理员→</a>
   </div>
 
   <div class="footer">
@@ -172,17 +174,74 @@ body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   </div>
 </div>
 
-<!-- ===== 团长/管理员看板 ===== -->
+<!-- ===== 团长自助查进度 ===== -->
+<div class="page" id="page-leader">
+  <div class="header">
+    <h1>👑 我的拼团</h1>
+    <p>输入你的微信昵称，查看拼团进度</p>
+  </div>
+
+  <div class="admin-area" style="border-color:#1a237e;">
+    <div class="admin-row">
+      <input type="text" id="leaderQueryName" placeholder="输入你的微信昵称">
+      <button class="btn btn-sm btn-primary" onclick="queryMyGroup()" style="width:80px;">查询</button>
+    </div>
+  </div>
+
+  <div id="leaderResult" style="display:none;">
+    <!-- 团长进度卡 -->
+    <div class="progress-card" style="background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06);text-align:center;">
+      <div style="font-size:28px;font-weight:800;color:#1a237e;" id="leaderCountDisplay">0</div>
+      <div style="font-size:13px;color:#888;margin-top:2px;">人参团 · 还差 <span id="leaderRemain" style="color:#c62828;font-weight:700;">3</span> 人成团</div>
+      <div style="height:6px;background:#e0e0e0;border-radius:3px;margin:12px 0;overflow:hidden;">
+        <div style="height:100%;background:linear-gradient(90deg,#1a237e,#3949ab);border-radius:3px;transition:width 0.5s;" id="leaderBar" class="leader-bar"></div>
+      </div>
+    </div>
+
+    <!-- 佣金 -->
+    <div class="admin-area" style="border-color:#2e7d32;background:#f1f8e9;">
+      <h3>💰 我的佣金</h3>
+      <div style="font-size:28px;font-weight:800;color:#2e7d32;" id="leaderCommission">¥0</div>
+      <div style="font-size:12px;color:#888;margin-top:4px;">已邀请 <span id="leaderInvited">0</span> 人 · 满3人后每多1人赚¥10</div>
+    </div>
+
+    <!-- 已成团状态 -->
+    <div id="leaderCompleted" style="display:none;background:#e8f5e9;border-radius:12px;padding:20px;text-align:center;">
+      <div style="font-size:36px;">🎉</div>
+      <div style="font-size:16px;font-weight:700;color:#2e7d32;margin-top:6px;">拼团成功！</div>
+      <div style="font-size:13px;color:#555;margin-top:4px;">团长¥99已返还，两套工具包已发放</div>
+      <div style="font-size:12px;color:#888;margin-top:4px;">继续拉人还能赚佣金</div>
+    </div>
+
+    <!-- 复制分享链接 -->
+    <div id="leaderShare" style="margin-top:14px;">
+      <p style="font-size:13px;color:#888;margin-bottom:6px;">📤 分享这个页面给朋友参团：</p>
+      <div style="display:flex;gap:6px;">
+        <input type="text" id="leaderShareLink" readonly style="flex:1;padding:8px;border:1.5px solid #ddd;border-radius:6px;font-size:12px;background:#f9f9f9;">
+        <button class="btn btn-sm btn-primary" onclick="copyLeaderLink()" style="width:80px;">复制</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;">
+    <button class="btn btn-outline btn-sm" onclick="showPage('page-home')">← 返回首页</button>
+  </div>
+</div>
+
+<style>
+.progress-card .leader-bar { width: 0%; }
+</style>
+
+<!-- ===== 管理员看板 ===== -->
 <div class="page" id="page-admin">
   <div class="header">
-    <h1>📋 拼团管理</h1>
-    <p>团长/管理员专用 · 手动更新参团进度</p>
+    <h1>📋 拼团管理后台</h1>
+    <p>管理员专用 · 更新参团进度</p>
   </div>
 
   <div class="admin-area" id="groupList">
     <h3>当前进行中的团</h3>
-    <div class="admin-hint">还没开团的团长先去首页 → 加微信开团。管理员在此更新参团人数。</div>
-
+    <div class="admin-hint">收到团长付款后，在此记录参团人数。</div>
     <div id="groupItems">
       <p style="font-size:13px;color:#888;text-align:center;padding:20px 0;">暂无进行中的团</p>
     </div>
@@ -242,7 +301,53 @@ function copyWechat() {
   });
 }
 
-// ===== 管理员更新参团人数 =====
+// ===== 团长查进度 =====
+function queryMyGroup() {
+  const name = document.getElementById('leaderQueryName').value.trim();
+  if (!name) { showToast('请输入你的微信昵称'); return; }
+
+  const groups = getGroups();
+  const group = groups.find(g => g.leader === name);
+
+  if (!group) {
+    showToast('未找到你的拼团记录，确认昵称是否正确或联系管理员');
+    return;
+  }
+
+  document.getElementById('leaderResult').style.display = 'block';
+
+  // 进度
+  document.getElementById('leaderCountDisplay').textContent = group.count + '人';
+  document.getElementById('leaderRemain').textContent = Math.max(0, 3 - group.count);
+  document.getElementById('leaderBar').style.width = Math.min(100, group.count / 3 * 100) + '%';
+
+  // 佣金
+  document.getElementById('leaderCommission').textContent = '¥' + group.commission;
+  document.getElementById('leaderInvited').textContent = Math.max(0, group.count - 1);
+
+  // 成团状态
+  const completed = document.getElementById('leaderCompleted');
+  if (group.completed) {
+    completed.style.display = 'block';
+  } else {
+    completed.style.display = 'none';
+  }
+
+  // 分享链接
+  document.getElementById('leaderShareLink').value = window.location.origin + window.location.pathname;
+}
+
+function copyLeaderLink() {
+  const link = document.getElementById('leaderShareLink');
+  link.select();
+  navigator.clipboard.writeText(link.value).then(() => {
+    showToast('✅ 链接已复制，去微信分享给朋友吧！');
+  }).catch(() => {
+    showToast('已选中链接，长按复制');
+  });
+}
+
+// ===== 管理员 =====
 function updateGroupCount() {
   const name = document.getElementById('adminGroupName').value.trim();
   const count = parseInt(document.getElementById('adminCount').value);
