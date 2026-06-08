@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇守信 · 母婴咖啡馆 · 三人拼团</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#fef7f0;color:#333}
+.wrap{max-width:480px;margin:0 auto;padding:16px;min-height:100vh}
+
+/* 顶部图占位 */
+.hero-img{width:100%;height:200px;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#ad1457;font-size:15px;margin-bottom:14px;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+
+.header{text-align:center;padding:4px 0 12px}
+.header h1{font-size:22px;color:#ad1457;font-weight:800}
+.header p{font-size:13px;color:#b07a7a;margin-top:4px}
+
+.tag{display:inline-block;background:#fce4ec;color:#ad1457;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600}
+
+/* 套餐卡 */
+.card{background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.card-img{height:160px;background:linear-gradient(135deg,#f8bbd0,#f48fb1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:14px}
+.card-body h3{font-size:16px;color:#333}
+.card-body .desc{font-size:13px;color:#888;margin:4px 0 8px;line-height:1.6}
+.price-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.price-row .now{font-size:26px;font-weight:800;color:#ad1457}
+.price-row .orig{font-size:14px;color:#bbb;text-decoration:line-through}
+.price-row .badge{background:#ad1457;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px}
+
+/* 列表 */
+.list-box{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px}
+.list-box h3{font-size:14px;font-weight:700;color:#ad1457;margin-bottom:8px}
+.list-item{display:flex;gap:8px;font-size:13px;color:#555;padding:5px 0;border-bottom:1px solid #f5f5f5}
+.list-item:last-child{border:none}
+.list-item .icon{flex-shrink:0}
+
+/* 团长规则 */
+.rule-card{background:linear-gradient(135deg,#ad1457,#c62858);color:#fff;border-radius:14px;padding:16px;margin-bottom:12px}
+.rule-card .big{font-size:18px;font-weight:800}
+.rule-grid{display:flex;gap:6px;margin-top:10px}
+.rule-grid > div{flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px}
+.rule-grid > div .emoji{font-size:18px}
+
+/* 步骤 */
+.step-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px}
+.step-item{display:flex;gap:12px;margin-bottom:14px}
+.step-item:last-child{margin-bottom:0}
+.step-num{width:28px;height:28px;background:#ad1457;color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;flex-shrink:0;font-size:14px}
+.step-text{flex:1}
+.step-text .t{font-weight:600;font-size:14px}
+.step-text .d{font-size:12px;color:#888;margin-top:2px}
+
+/* 微信 */
+.wechat-box{background:#fce4ec;border-radius:12px;padding:16px;margin-bottom:12px;text-align:center}
+.wechat-box .label{font-size:12px;color:#ad1457}
+.wechat-box .id{font-size:18px;font-weight:700;color:#333;margin:4px 0;letter-spacing:1px}
+.wechat-box .tip{font-size:11px;color:#999}
+
+/* 按钮 */
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;text-align:center}
+.btn-primary{background:linear-gradient(135deg,#ad1457,#c62858);color:#fff}
+.btn-secondary{background:linear-gradient(135deg,#2e7d32,#43a047);color:#fff}
+.btn-outline{background:#fff;color:#ad1457;border:1.5px solid #ad1457}
+
+/* 隐私声明 */
+.ps{font-size:11px;color:#bbb;text-align:center;margin:12px 0 6px;line-height:1.6}
+
+/* 底部固定 */
+.sticky{position:fixed;bottom:0;left:0;right:0;padding:12px 16px 16px;background:linear-gradient(transparent,#fef7f0 40%);z-index:50}
+.sticky .btn{max-width:480px;margin:0 auto}
+
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:200;display:none;max-width:90%;text-align:center}
+
+.footer{text-align:center;padding:16px 0 90px;font-size:11px;color:#ccc}
+.footer strong{color:#999}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<div class="wrap">
+
+  <!-- 顶部图片（占位，朋友替换照片） -->
+  <div class="hero-img">
+    <span id="imgPlaceholder">📸 朋友在这里换咖啡馆实拍图</span>
+    <img id="storeImg" style="display:none" alt="咖啡馆实拍">
+  </div>
+
+  <div class="header">
+    <div class="tag">☕ 母婴友好 · 亲子空间</div>
+    <h1>闺蜜带娃下午茶</h1>
+    <p>你喝咖啡聊天，宝宝在游乐区玩</p>
+  </div>
+
+  <!-- 套餐内容 -->
+  <div class="card">
+    <div class="card-img">
+      <span id="productPlaceholder">🍰 套餐实拍图（朋友替换）</span>
+      <img id="productImg" style="display:none" alt="套餐实拍">
+    </div>
+    <div class="card-body">
+      <h3>闺蜜带娃下午茶套餐</h3>
+      <div class="desc">3杯饮品（咖啡/果汁任选）+ 1份儿童小食拼盘 + 1小时游乐区畅玩</div>
+      <div class="price-row">
+        <span class="now">¥39</span>
+        <span class="orig">¥68</span>
+        <span class="badge">团长免单</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 套餐亮点 -->
+  <div class="list-box">
+    <h3>🌸 套餐包含</h3>
+    <div class="list-item"><span class="icon">☕</span> 饮品三选一：拿铁/果汁/燕麦奶（3杯）</div>
+    <div class="list-item"><span class="icon">🧇</span> 儿童小食拼盘（水果+华夫饼+酸奶）</div>
+    <div class="list-item"><span class="icon">🎪</span> 游乐区畅玩1小时（海洋球+滑梯+绘本）</div>
+    <div class="list-item"><span class="icon">📚</span> 亲子绘本角免费阅读</div>
+    <div class="list-item"><span class="icon">🅿️</span> 店内免费WiFi+尿布台+哺乳区</div>
+  </div>
+
+  <!-- 适合谁 -->
+  <div class="list-box">
+    <h3>👩‍👧 适合</h3>
+    <div class="list-item">👭 妈妈们约着带娃面基</div>
+    <div class="list-item">👶 全职宝妈每周放风</div>
+    <div class="list-item">🤱 产后恢复期想出门又离不开娃</div>
+    <div class="list-item">🎂 小型宝妈聚会/生日趴预热</div>
+  </div>
+
+  <!-- 拼团规则 -->
+  <div class="rule-card">
+    <div class="big">💰 一次拼团，团长免单</div>
+    <div class="rule-grid">
+      <div><div class="emoji">🎯</div>你付¥39开团</div>
+      <div><div class="emoji">👥</div>拉2个朋友各付¥39</div>
+      <div><div class="emoji">💰</div>满3人再给你¥69</div>
+      <div><div class="emoji">🎉</div>到店核销畅玩</div>
+    </div>
+    <div style="text-align:center;margin-top:8px;font-size:12px;opacity:0.85">第4人起团长每单分¥20 · 拉越多赚越多</div>
+  </div>
+
+  <!-- 步骤 -->
+  <div class="step-card">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text"><div class="t">加微信付款¥39开团</div><div class="d">添加客服微信，发"开团"获取付款码</div></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text"><div class="t">分享给朋友</div><div class="d">把页面转发给宝妈群/朋友圈，朋友各付¥39参团</div></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text"><div class="t">满3人→你再领¥69</div><div class="d">团长免单倒赚¥30，第4人起每单再赚¥20</div></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-text"><div class="t">到店核销</div><div class="d">报微信昵称即可使用，提前一天预约</div></div>
+    </div>
+  </div>
+
+  <div class="wechat-box">
+    <div class="label">📲 客服微信</div>
+    <div class="id">hongchunyu042896</div>
+    <div class="tip">长按复制 → 去微信添加 → 发"开团"</div>
+  </div>
+
+  <button class="btn btn-secondary" onclick="copyWechat()">📋 复制微信号</button>
+
+  <!-- 隐私 -->
+  <div class="ps">
+    📌 每张体验券含核销编号，到店报微信昵称即可<br>
+    有效期：购买后30天内 · 需提前一天预约
+  </div>
+
+  <div style="height:80px"></div>
+</div>
+
+<!-- 底部固定按钮 -->
+<div class="sticky">
+  <button class="btn btn-primary" onclick="copyWechat()">🚀 我要开团 · ¥39闺蜜下午茶</button>
+</div>
+
+<script>
+function copyWechat(){
+  var w='hongchunyu042896'
+  navigator.clipboard.writeText(w).then(function(){showToast('✅ 微信号已复制')}).catch(function(){showToast('微信号：hongchunyu042896')})
+}
+function showToast(msg){
+  var t=document.getElementById('toast');t.textContent=msg;t.style.display='block'
+  clearTimeout(t._timer);t._timer=setTimeout(function(){t.style.display='none'},2500)
+}
+</script>
+</body>
+</html>
