@@ -200,25 +200,31 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
     <div class="big">💰 一次拼团，团长免单</div>
     <div style="display:flex;gap:6px;margin-top:10px">
       <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">🎯</div>你开团付¥39
+        <div style="font-size:16px">🎯</div>你付¥39开团
       </div>
       <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
         <div style="font-size:16px">👥</div>拉2个朋友各付¥39
       </div>
       <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">💰</div>满3人退你¥99
+        <div style="font-size:16px">💰</div>满3人退你¥69
       </div>
       <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
         <div style="font-size:16px">📦</div>免费拿两套工具
       </div>
     </div>
-    <div style="text-align:center;margin-top:8px;font-size:12px;opacity:0.85">第4人起团长每单赚¥10佣金 · 拉越多赚越多</div>
+    <div style="text-align:center;margin-top:8px;font-size:12px;opacity:0.85">第4人起团长每单分¥20 · 拉越多赚越多</div>
+  </div>
+
+  <!-- 保证金/防转卖说明 -->
+  <div style="background:#fff3e0;border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:12px;color:#e65100;line-height:1.7">
+    <strong>⚠️ 保证金规则：</strong>团长付¥39即视为保证金。满3人成团后退¥69（¥39本金+¥30奖励）。<br>
+    每份工具包按团长编号发放，含隐藏追踪标记。转卖他人一经发现→取消团长资格、不退保证金、永久拉黑。
   </div>
 
   <!-- 付款提示 -->
   <div style="text-align:center;margin-bottom:10px;font-size:11px;color:#aaa;line-height:1.6">
     付款后加微信 hongchunyu042896 发截图<br>
-    管理员确认后即可查看进度 · 满3人自动退¥99
+    管理员确认后即可查看进度 · 满3人退团长¥69
   </div>
 
   <div style="height:80px"></div>
@@ -289,7 +295,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
     <div class="admin-area comm-box">
       <h3>💰 我的佣金</h3>
       <div class="comm-amt" id="leaderCommission">¥0</div>
-      <div style="font-size:12px;color:#888;margin-top:4px">已邀请 <span id="leaderInvited">0</span> 人 · 满3人后每多1人赚¥10</div>
+      <div style="font-size:12px;color:#888;margin-top:4px">已邀请 <span id="leaderInvited">0</span> 人 · 满3人后每多1人赚¥20</div>
     </div>
     <div class="success-box" id="leaderCompleted">
       <div style="font-size:36px">🎉</div>
@@ -377,7 +383,7 @@ function updateGroupCount(){
   var gs=gG(),g=gs.find(function(x){return x.leader===n})
   if(!g){g={leader:n,count:0,commission:0,completed:false,createdAt:Date.now()};gs.push(g)}
   g.count=c
-  if(c>=3){g.completed=true;g.commission=c>3?(c-3)*10:0}else{g.completed=false;g.commission=0}
+  if(c>=3){g.completed=true;g.commission=c>3?(c-3)*20:0}else{g.completed=false;g.commission=0}
   sG(gs);refreshAdmin();
   showToast('✅ '+n+'的团已更新：'+c+'人参团')
   document.getElementById('adminGroupName').value='';document.getElementById('adminCount').value=''
