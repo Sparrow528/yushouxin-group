@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>🏀 晨练计划 - 8岁小篮球手</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', sans-serif;
+    background: #f0f8ff;
+    color: #333;
+    padding: 15px;
+    max-width: 780px;
+    margin: 0 auto;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .header {
+    text-align: center;
+    padding: 20px 15px 14px;
+    background: #58b9ff;
+    border-radius: 24px;
+    border: 4px solid #e74c3c;
+    margin-bottom: 18px;
+    color: #fff;
+  }
+  .header h1 {
+    font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+    font-size: 38px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #2a7fc9;
+    letter-spacing: 3px;
+  }
+  .header .sub {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 5px;
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
+    padding: 3px 18px;
+    border-radius: 16px;
+    border: 2px solid #fff;
+  }
+
+  .day-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+  }
+
+  .day-card .day-title {
+    font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+    font-size: 20px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px dashed #eee;
+  }
+
+  .day-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .day-card td {
+    padding: 3px 4px;
+    border-bottom: 1px dashed #f0f0f0;
+    vertical-align: top;
+  }
+  .day-card td:first-child {
+    width: 32px;
+    color: #e67e22;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .day-card td:nth-child(2) {
+    padding-left: 4px;
+  }
+  .day-card tr:last-child td {
+    border-bottom: none;
+  }
+
+  .illust-section { margin: 18px 0; }
+  .illust-section h2 {
+    font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+    font-size: 24px;
+    color: #e74c3c;
+    margin-bottom: 12px;
+    border-left: 5px solid #e74c3c;
+    padding-left: 10px;
+  }
+
+  .illust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .illust-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 8px;
+    border: 2px solid #ddd;
+    text-align: center;
+  }
+
+  .illust-card .big-icon { font-size: 36px; line-height: 1.1; display: block; }
+  .illust-card .moves { display: flex; justify-content: center; gap: 4px; margin: 4px 0; }
+  .illust-card .moves span { font-size: 22px; }
+  .illust-card h3 { font-size: 14px; color: #2c3e50; margin: 3px 0; }
+  .illust-card p { font-size: 11px; color: #888; line-height: 1.4; }
+
+  .tips {
+    background: #e8f4fd;
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 2px dashed #58b9ff;
+    margin: 16px 0;
+  }
+  .tips h3 { color: #2980b9; font-size: 16px; margin-bottom: 6px; }
+  .tips li {
+    font-size: 12px; margin-bottom: 3px; list-style: none;
+    padding-left: 18px; position: relative;
+  }
+  .tips li::before { content: "🔔"; position: absolute; left: 0; font-size: 10px; }
+
+  .star-chart {
+    background: #fffbe6;
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 2px dashed #f5c542;
+    margin: 16px 0;
+  }
+  .star-chart h3 { color: #d4a017; font-size: 16px; margin-bottom: 8px; }
+  .star-row { display: flex; justify-content: space-between; font-size: 16px; padding: 6px 0; flex-wrap: wrap; gap: 4px; }
+  .star-row span { background: #f9f3e0; padding: 3px 8px; border-radius: 8px; white-space: nowrap; }
+
+  .footer {
+    text-align: center; font-size: 11px; color: #bbb;
+    padding: 12px 0 5px; border-top: 2px dashed #eee; margin-top: 8px;
+  }
+
+  @media print {
+    body { background: #fff; padding: 8px; }
+    .header { background: #58b9ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .day-card { break-inside: avoid; }
+    .illust-card { break-inside: avoid; }
+    .star-row span { background: #f9f3e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { margin: 8mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏀 小篮球手晨练计划</h1>
+  <div class="sub">8岁 · 不拍球 · 不吵邻居</div>
+</div>
+
+<div class="tips">
+  <h3>📌 晨练须知</h3>
+  <ul>
+    <li>每天约 <strong>20分钟</strong>，空腹喝半杯温水再出门</li>
+    <li>找 <strong>草地/塑胶地</strong>，落地屈膝缓冲不跺脚</li>
+    <li>随身带水，每5分钟喝一小口</li>
+    <li>完成一天集一个⭐，7天换小奖励🎁</li>
+  </ul>
+</div>
+
+<!-- 周一 -->
+<div class="day-card">
+  <div class="day-title" style="color:#e67e22;">📅 周一 · 灵敏步伐</div>
+  <table>
+    <tr><td>🔥</td><td>小跑高抬腿 · 肩绕圈 · 手腕脚踝</td></tr>
+    <tr><td>①</td><td><strong>小碎步快跑</strong> — 原地高频踩步，越快越好</td></tr>
+    <tr><td>②</td><td><strong>折返跑</strong> — 5米摸地折返，4趟×2组</td></tr>
+    <tr><td>③</td><td><strong>🦀 螃蟹步</strong> — 屈膝横移，手张开防守姿势，5米×3趟</td></tr>
+    <tr><td>④</td><td><strong>交叉步</strong> — 左交叉→右交叉，身体压低，5米×3趟</td></tr>
+    <tr><td>🧘</td><td>坐姿体前屈 · 手臂交叉拉伸</td></tr>
+  </table>
+</div>
+
+<!-- 周二 -->
+<div class="day-card">
+  <div class="day-title" style="color:#e74c3c;">📅 周二 · 爆发速度</div>
+  <table>
+    <tr><td>🔥</td><td>踢臀跑 · 抱膝行进 · 侧弓步</td></tr>
+    <tr><td>①</td><td><strong>高抬腿</strong> — 膝盖提到腰高，落地轻，20次×2组</td></tr>
+    <tr><td>②</td><td><strong>冲刺折返</strong> — 5米急停摸地→冲回，6趟×2组</td></tr>
+    <tr><td>③</td><td><strong>深蹲跳</strong> — 原地跳，落地屈膝缓冲，8次×2组</td></tr>
+    <tr><td>④</td><td><strong>后退跑</strong> — 身体前倾看前方，倒着跑，5米×3趟</td></tr>
+    <tr><td>🧘</td><td>蝴蝶式 · 大腿前侧拉伸</td></tr>
+  </table>
+</div>
+
+<!-- 周三 -->
+<div class="day-card">
+  <div class="day-title" style="color:#2ecc71;">📅 周三 · 防守脚步</div>
+  <table>
+    <tr><td>🔥</td><td>原地慢跑 · 腰部转体 · 胸扩展</td></tr>
+    <tr><td>①</td><td><strong>防守滑步</strong> — 屈膝低重心，手张开左右滑，5米×4趟</td></tr>
+    <tr><td>②</td><td><strong>Z字跑</strong> — 斜向折线跑，模拟过人，6折点×2组</td></tr>
+    <tr><td>③</td><td><strong>高抬腿+冲刺</strong> — 5次高抬腿→冲出去，4组</td></tr>
+    <tr><td>④</td><td><strong>螃蟹加速</strong> — 横移5米突然前冲，4组</td></tr>
+    <tr><td>🧘</td><td>猫牛式 · 腰部扭转</td></tr>
+  </table>
+</div>
+
+<!-- 周四 -->
+<div class="day-card">
+  <div class="day-title" style="color:#9b59b6;">📅 周四 · 耐力协调</div>
+  <table>
+    <tr><td>🔥</td><td>小碎步 · 交叉步 · 转髋</td></tr>
+    <tr><td>①</td><td><strong>往返跑</strong> — 8米摸地折返，保持节奏，6趟×2组</td></tr>
+    <tr><td>②</td><td><strong>单脚跳交替</strong> — 左3次→右3次→循环，4循环</td></tr>
+    <tr><td>③</td><td><strong>进进退退</strong> — 冲2步→退2步→循环，5米×4趟</td></tr>
+    <tr><td>④</td><td><strong>绳梯步</strong> — 地上划线做进出步，30秒×2</td></tr>
+    <tr><td>🧘</td><td>小腿 · 股四头肌拉伸</td></tr>
+  </table>
+</div>
+
+<!-- 周五 -->
+<div class="day-card">
+  <div class="day-title" style="color:#f39c12;">📅 周五 · 综合训练</div>
+  <table>
+    <tr><td>🔥</td><td>慢跑+开合跳 · 全身活动</td></tr>
+    <tr><td>①</td><td><strong>折返跑</strong> — 8米模拟快攻，4趟×2组</td></tr>
+    <tr><td>②</td><td><strong>交叉步→冲刺</strong> — 横移5米→突然前冲，4组</td></tr>
+    <tr><td>③</td><td><strong>深蹲→弓步循环</strong> — 站起交替，6次×2组</td></tr>
+    <tr><td>④</td><td><strong>坐地起身冲</strong> — 坐下→快起身→冲，4组</td></tr>
+    <tr><td>🧘</td><td>全身舒展</td></tr>
+  </table>
+</div>
+
+<!-- 周六 -->
+<div class="day-card">
+  <div class="day-title" style="color:#e67e22;">🎮 周六 · 游戏日</div>
+  <table>
+    <tr><td>🦀</td><td><strong>螃蟹抓人</strong> — 一人横着走抓人，其他人横着躲</td></tr>
+    <tr><td>🐸</td><td><strong>青蛙过河</strong> — 画线为河，深蹲跳过去不踩线</td></tr>
+    <tr><td>🌀</td><td><strong>转圈冲刺</strong> — 原地转3圈→立刻冲5米</td></tr>
+    <tr><td>👥</td><td><strong>影子防守</strong> — 家长变向移动，娃用滑步跟住</td></tr>
+  </table>
+</div>
+
+<!-- 周日 -->
+<div class="day-card">
+  <div class="day-title" style="color:#95a5a6;">😴 周日 · 休息日</div>
+  <p style="font-size:13px; color:#888; margin:4px 0;">做5分钟拉伸放松，揉揉腿。可以散步10分钟🚶</p>
+</div>
+
+<!-- 图解 -->
+<div class="illust-section">
+  <h2>🎨 动作图解说明</h2>
+  <div class="illust-grid">
+    <div class="illust-card" style="border-color:#58b9ff;">
+      <div class="big-icon">🏃</div>
+      <div class="moves"><span>🔵</span><span>➡️</span><span>🔴</span><span>⬅️</span><span>🔵</span></div>
+      <h3>🏃 折返跑</h3>
+      <p>跑到折返点摸地→转身冲回来。膝盖微屈，别急刹车。</p>
+    </div>
+    <div class="illust-card" style="border-color:#e74c3c;">
+      <div class="big-icon">🦀</div>
+      <div class="moves"><span>⬅️</span><span>🧑</span><span>➡️</span></div>
+      <h3>🦀 螃蟹步</h3>
+      <p>屈膝蹲低，双手张开，像螃蟹一样横着走。</p>
+    </div>
+    <div class="illust-card" style="border-color:#2ecc71;">
+      <div class="big-icon">🔄</div>
+      <div class="moves"><span>↗️</span><span>🧑</span><span>↖️</span></div>
+      <h3>🔄 交叉步</h3>
+      <p>左脚跨右脚前面→右脚跨左脚前面，身体压低。</p>
+    </div>
+    <div class="illust-card" style="border-color:#9b59b6;">
+      <div class="big-icon">🛡️</div>
+      <div class="moves"><span>⬅️</span><span>🧑</span><span>➡️</span></div>
+      <h3>🛡️ 防守滑步</h3>
+      <p>膝盖弯90度，屁股坐下去，手张开。别站起来！</p>
+    </div>
+    <div class="illust-card" style="border-color:#f1c40f;">
+      <div class="big-icon">🦵</div>
+      <div class="moves"><span>⬆️</span><span>⬆️</span><span>⬆️</span></div>
+      <h3>🦵 高抬腿</h3>
+      <p>膝盖提到腰那么高，像原地踩自行车。</p>
+    </div>
+    <div class="illust-card" style="border-color:#e67e22;">
+      <div class="big-icon">⚡</div>
+      <div class="moves"><span>↗️</span><span>↘️</span><span>↗️</span></div>
+      <h3>⚡ Z字跑</h3>
+      <p>斜着跑→急停变向，像在球场上过人绕桩。</p>
+    </div>
+    <div class="illust-card" style="border-color:#e74c3c;">
+      <div class="big-icon">🐸</div>
+      <div class="moves"><span>⬇️</span><span>🧑</span><span>⬆️</span></div>
+      <h3>🐸 深蹲跳</h3>
+      <p>下蹲像青蛙→跳起来，落地要轻，像踩棉花。</p>
+    </div>
+    <div class="illust-card" style="border-color:#1abc9c;">
+      <div class="big-icon">↔️</div>
+      <div class="moves"><span>➡️</span><span>⬅️</span><span>➡️</span><span>⬅️</span></div>
+      <h3>↔️ 进进退退</h3>
+      <p>冲两步→立刻退两步，像篮球急停回防。</p>
+    </div>
+  </div>
+</div>
+
+<div class="star-chart">
+  <h3>⭐ 集星表 ⭐</h3>
+  <div class="star-row">
+    <span>周一 ☐</span> <span>周二 ☐</span> <span>周三 ☐</span>
+    <span>周四 ☐</span> <span>周五 ☐</span> <span>周六 ☐</span> <span>周日 ☐</span>
+  </div>
+  <p style="font-size:12px; color:#888;">完成一天打一个✓，集满换奖励🎁</p>
+</div>
+
+<div class="footer">🏀 给小篮球手的晨练计划</div>
+
+</body>
+</html>
