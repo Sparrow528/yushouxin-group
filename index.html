@@ -265,8 +265,12 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
   <div class="header"><h1>👑 我的拼团</h1><p>输入微信昵称，查看进度</p></div>
   <div class="admin-area" style="border-color:#1a237e">
     <div class="admin-row">
-      <input type="text" id="leaderQueryName" placeholder="输入你的微信昵称">
-      <button class="btn btn-sm btn-primary" onclick="queryMyGroup()" style="width:80px">查询</button>
+      <input type="text" id="leaderQueryName" placeholder="输入昵称" style="flex:0 0 100px">
+      <select id="leaderQueryVersion" style="flex:0 0 90px;padding:6px;border:1.5px solid #ddd;border-radius:6px;font-size:12px">
+        <option value="finance">📋财会版</option>
+        <option value="boss">📊老板版</option>
+      </select>
+      <button class="btn btn-sm btn-primary" onclick="queryMyGroup()" style="width:60px">查</button>
     </div>
   </div>
   <div id="leaderPending" style="display:none;background:#fff8e1;border:1.5px dashed #ffb300;border-radius:12px;padding:16px;margin-bottom:14px;text-align:center">
@@ -318,9 +322,13 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
   <div class="admin-area">
     <h3>➕ 新增/更新</h3>
     <div class="admin-row">
-      <input type="text" id="adminGroupName" placeholder="团长昵称" style="flex:0 0 120px">
-      <input type="number" id="adminCount" placeholder="人数" min="0" max="99" style="flex:0 0 60px">
-      <button class="btn btn-sm btn-primary" onclick="updateGroupCount()" style="flex:1">更新</button>
+      <input type="text" id="adminGroupName" placeholder="团长昵称" style="flex:0 0 110px">
+      <select id="adminVersion" style="flex:0 0 90px;padding:6px;border:1.5px solid #ddd;border-radius:6px;font-size:12px">
+        <option value="finance" style="color:#1565c0">📋财会版</option>
+        <option value="boss" style="color:#c62828">📊老板版</option>
+      </select>
+      <input type="number" id="adminCount" placeholder="人数" min="0" max="99" style="flex:0 0 55px">
+      <button class="btn btn-sm btn-primary" onclick="updateGroupCount()" style="flex:0 0 50px">更新</button>
     </div>
     <div style="font-size:11px;color:#888">满3人自动成团，第4人起团长每单分¥20</div>
   </div>
@@ -353,9 +361,9 @@ function copyWechat(){
   navigator.clipboard.writeText(w).then(function(){showToast('✅ 微信号已复制')}).catch(function(){showToast('微信号：hongchunyu042896')})
 }
 function queryMyGroup(){
-  var n=document.getElementById('leaderQueryName').value.trim()
+  var n=document.getElementById('leaderQueryName').value.trim(),v=document.getElementById('leaderQueryVersion').value
   if(!n){showToast('请输入昵称');return}
-  var g=gG().find(function(x){return x.leader===n})
+  var g=gG().find(function(x){return x.leader===n&&x.version===v})
   if(!g){document.getElementById('leaderPending').style.display='block';document.getElementById('leaderResult').style.display='none';return}
   document.getElementById('leaderPending').style.display='none';document.getElementById('leaderResult').style.display='block'
   document.getElementById('leaderCountDisplay').textContent=g.count
@@ -371,13 +379,13 @@ function copyLeaderLink(){
   navigator.clipboard.writeText(l.value).then(function(){showToast('✅ 链接已复制')}).catch(function(){showToast('已选中链接')})
 }
 function updateGroupCount(){
-  var n=document.getElementById('adminGroupName').value.trim(),c=parseInt(document.getElementById('adminCount').value)
+  var n=document.getElementById('adminGroupName').value.trim(),v=document.getElementById('adminVersion').value,c=parseInt(document.getElementById('adminCount').value)
   if(!n){showToast('请输入昵称');return}
   if(isNaN(c)||c<0){showToast('请输入有效人数');return}
-  var gs=gG(),g=gs.find(function(x){return x.leader===n})
-  if(!g){g={leader:n,count:0,commission:0,completed:false,createdAt:Date.now()};gs.push(g)}
+  var gs=gG(),g=gs.find(function(x){return x.leader===n&&x.version===v})
+  if(!g){g={leader:n,version:v,count:0,commission:0,completed:false,createdAt:Date.now()};gs.push(g)}
   g.count=c
-  >  if(c>=3){g.completed=true;g.commission=c>3?(c-3)*20:0}else{g.completed=false;g.commission=0}
+  if(c>=3){g.completed=true;g.commission=c>3?(c-3)*20:0}else{g.completed=false;g.commission=0}
   sG(gs);refreshAdmin();
   showToast('✅ '+n+'的团已更新：'+c+'人参团')
   document.getElementById('adminGroupName').value='';document.getElementById('adminCount').value=''
@@ -387,8 +395,8 @@ function refreshAdmin(){
   if(a.length===0&&d.length===0){c.innerHTML='<p style="font-size:13px;color:#888;text-align:center;padding:20px 0">暂无拼团记录</p>'}
   else{
     var h=''
-    a.forEach(function(g){var r=Math.max(0,3-g.count);h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人</span></div><span class="admin-status waiting">还差'+r+'人'+(r===0?' 🎉':'')+'</span></div>'})
-    d.forEach(function(g){h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人参团</span></div><span class="admin-status full">✅ 已成团 佣金¥'+g.commission+'</span></div>'})
+    a.forEach(function(g){var r=Math.max(0,3-g.count);var vl=g.version==='boss'?'📊老板版':'📋财会版';h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+vl+'</span><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人</span></div><span class="admin-status waiting">还差'+r+'人'+(r===0?' 🎉':'')+'</span></div>'})
+    d.forEach(function(g){var vl=g.version==='boss'?'📊老板版':'📋财会版';h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+vl+'</span><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人参团</span></div><span class="admin-status full">✅ 佣金¥'+g.commission+'</span></div>'})
     c.innerHTML=h
   }
   document.getElementById('totalGroups').textContent=gs.length
