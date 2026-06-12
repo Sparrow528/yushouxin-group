@@ -6,444 +6,392 @@
 <title>宇守信 · 三人拼团 · 团长全额返</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#333}
-.page{display:none;max-width:480px;margin:0 auto;padding:16px;min-height:100vh}
-.page.active{display:block}
-.header{text-align:center;padding:16px 0 10px}
-.header h1{font-size:20px;color:#1a237e;font-weight:700}
-.header p{font-size:13px;color:#888;margin-top:4px}
-.btn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-align:center}
-.btn-primary{background:linear-gradient(135deg,#1a237e,#283593);color:#fff}
-.btn-secondary{background:linear-gradient(135deg,#2e7d32,#43a047);color:#fff}
-.btn-outline{background:#fff;color:#1a237e;border:1.5px solid #1a237e}
-.btn-sm{padding:10px;font-size:13px;border-radius:8px}
-.wechat-box{background:#e8f5e9;border-radius:12px;padding:16px;margin-bottom:14px;text-align:center}
-.wechat-box .label{font-size:12px;color:#558b2f}
-.wechat-box .id{font-size:18px;font-weight:700;color:#1a237e;margin:4px 0;letter-spacing:1px}
-.wechat-box .tip{font-size:11px;color:#888}
-.rule-card{background:linear-gradient(135deg,#1a237e,#283593);color:#fff;border-radius:12px;padding:16px;margin-bottom:14px}
-.rule-card .big{font-size:18px;font-weight:800}
-.admin-area{background:#fff;border:1.5px dashed #ddd;border-radius:12px;padding:16px;margin-bottom:14px}
-.admin-area h3{font-size:14px;color:#333;margin-bottom:8px}
-.admin-hint{font-size:12px;color:#888;margin-bottom:8px;line-height:1.5}
-.admin-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
-.admin-row input{flex:1;padding:8px;border:1.5px solid #ddd;border-radius:6px;font-size:13px}
-.admin-row input:focus{border-color:#1a237e;outline:none}
-.admin-status{font-size:12px;padding:4px 10px;border-radius:10px;display:inline-block}
-.admin-status.waiting{background:#fff3e0;color:#e65100}
-.admin-status.full{background:#e8f5e9;color:#2e7d32}
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:200;display:none;max-width:90%;text-align:center}
-.footer{text-align:center;padding:16px 0;font-size:11px;color:#aaa}
-.footer strong{color:#666}
-.sticky-btn{position:fixed;bottom:0;left:0;right:0;padding:12px 16px 16px;background:linear-gradient(transparent,#f0f2f5 40%);z-index:50}
-.sticky-btn .btn{max-width:480px;margin:0 auto}
-.section-card{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
-.section-head{background:linear-gradient(135deg,#1565c0,#1976d2);padding:12px 14px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.section-head h3{font-size:15px;font-weight:700}
-.section-head .price{text-align:right}
-.section-head .price .orig{font-size:11px;text-decoration:line-through;opacity:0.6}
-.section-head .price .now{font-size:20px;font-weight:800}
-.section-head.red{background:linear-gradient(135deg,#c62828,#d32f2f)}
-.section-body{padding:10px 12px}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f4f0;color:#333;padding-bottom:100px}
+
+/* 宇守信品牌头 */
+.brand-top{background:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #e0e8e0}
+.brand-logo{width:36px;height:36px;background:#c62828;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;flex-shrink:0;border:1px solid #b71c1c}
+.brand-info{flex:1}
+.brand-name{font-size:15px;font-weight:700;color:#1a237e}
+.brand-sub{font-size:11px;color:#888;margin-top:1px}
+.brand-badge{font-size:10px;background:#e8f5e9;color:#2e7d32;padding:3px 8px;border-radius:10px;white-space:nowrap}
+
+/* 拼团横幅 */
+.hero{background:linear-gradient(135deg,#1a237e 0%,#283593 50%,#1e6f5c 100%);padding:28px 16px 22px;text-align:center;color:#fff}
+.hero-icon{font-size:36px;margin-bottom:8px}
+.hero h1{font-size:22px;font-weight:800;letter-spacing:1px}
+.hero p{font-size:12px;opacity:0.8;margin-top:6px}
+.hero .brand-tag{display:inline-block;font-size:10px;background:rgba(255,255,255,0.15);padding:3px 12px;border-radius:10px;margin-top:8px}
+
+.container{max-width:640px;margin:0 auto;padding:10px 12px}
+
+/* 价格 */
+.price-section{background:#fff;border-radius:12px;padding:16px;margin-bottom:10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.price-section .origin{font-size:13px;color:#bbb;text-decoration:line-through}
+.price-section .current{font-size:34px;font-weight:800;color:#c62828;margin:2px 0}
+.price-section .current small{font-size:14px;font-weight:400}
+.price-section .rule{font-size:12px;color:#1a237e;font-weight:600;margin-top:4px}
+
+/* 痛点 */
+.pain-points{background:#fff;border-radius:12px;padding:16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.pain-points h3{font-size:14px;color:#1a237e;margin-bottom:10px;font-weight:700}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.pain-item{font-size:11px;color:#444;padding:7px 9px;background:#f5f7fa;border-radius:6px;display:flex;align-items:center;gap:4px}
+.pain-item::before{content:'';width:4px;height:4px;background:#34d399;border-radius:50%;flex-shrink:0}
+
+/* 信任指标 */
+.trust-bar{display:flex;gap:6px;margin-bottom:10px}
+.trust-item{flex:1;background:#fff;border-radius:10px;padding:10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.trust-item .num{font-size:18px;font-weight:800;color:#1a237e}
+.trust-item .num.hot{color:#c62828}
+.trust-item .label{font-size:10px;color:#999;margin-top:2px}
+
+/* 工具包卡片 */
+.pack-card{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.pack-head{background:linear-gradient(135deg,#1565c0,#1976d2);padding:12px 14px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.pack-head h3{font-size:13px;font-weight:700}
+.pack-head .tag{font-size:10px;background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:8px}
+.pack-head .pack-price{font-size:20px;font-weight:800}
+.pack-head.red{background:linear-gradient(135deg,#c62828,#d32f2f)}
+.pack-body{padding:8px 10px}
 .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.tool-item{font-size:11px;color:#444;padding:5px 7px;background:#f8f9fa;border-radius:5px}
-.tool-item.blue{background:#e3f2fd}
-.tool-item.red{background:#ffebee}
-.pain-box{background:linear-gradient(135deg,#fff8e1,#fff3cd);border-radius:12px;padding:14px;margin-bottom:12px}
-.pain-box h3{font-size:14px;font-weight:700;color:#e65100;margin-bottom:8px}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.pain-item{font-size:12px;color:#5d4037;background:rgba(255,255,255,0.7);padding:7px 8px;border-radius:6px}
-.step-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px}
-.step-item{display:flex;gap:12px;margin-bottom:14px}
-.step-item:last-child{margin-bottom:0}
-.step-num{width:28px;height:28px;background:#1a237e;color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;flex-shrink:0}
-.step-text{flex:1}
-.step-text .t{font-weight:600;font-size:14px}
-.step-text .d{font-size:12px;color:#888;margin-top:2px}
-.progress-card{background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06);text-align:center}
-.progress-card .num{font-size:28px;font-weight:800;color:#1a237e}
-.p-bar{height:6px;background:#e0e0e0;border-radius:3px;margin:12px 0;overflow:hidden}
-.p-bar-inner{height:100%;background:linear-gradient(90deg,#1a237e,#3949ab);border-radius:3px;transition:width 0.5s}
-.comm-box{border-color:#2e7d32;background:#f1f8e9}
-.comm-box .comm-amt{font-size:28px;font-weight:800;color:#2e7d32}
-.success-box{display:none;background:#e8f5e9;border-radius:12px;padding:20px;text-align:center}
-.share-row{display:flex;gap:6px;margin-top:14px}
-.share-row input{flex:1;padding:8px;border:1.5px solid #ddd;border-radius:6px;font-size:12px;background:#f9f9f9}
+.tool-item{font-size:10px;color:#444;padding:5px 7px;background:#f5f7fa;border-radius:5px;display:flex;align-items:center;gap:3px}
+.tool-item.b{background:#e3f2fd}
+.tool-item.r{background:#ffebee}
+
+/* 规则 */
+.rule-section{background:linear-gradient(135deg,#1a237e,#283593);color:#fff;border-radius:12px;padding:16px;margin-bottom:10px;text-align:center}
+.rule-section .big{font-size:16px;font-weight:800;margin-bottom:8px}
+.rule-steps{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.rule-step{background:rgba(255,255,255,0.1);border-radius:8px;padding:8px 10px;font-size:11px;text-align:center;flex:1;min-width:65px}
+.rule-step .icon{font-size:20px;display:block;margin-bottom:2px}
+.rule-note{font-size:11px;margin-top:6px;opacity:0.8}
+
+/* 客服 */
+.contact-section{background:#fff;border-radius:12px;padding:16px;margin-bottom:10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.contact-section .label{font-size:11px;color:#888;margin-bottom:6px}
+.contact-brand{font-size:20px;font-weight:800;color:#1a237e;letter-spacing:2px;margin:4px 0}
+.contact-btn{display:inline-flex;align-items:center;gap:4px;background:#1a237e;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin:6px 0}
+.contact-btn:hover{background:#283593}
+.contact-btn:active{opacity:0.9}
+.contact-tip{font-size:10px;color:#aaa;margin-top:4px}
+
+/* 查团 */
+.query-section{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.query-section h3{font-size:13px;font-weight:700;color:#1a237e;margin-bottom:8px}
+.query-row{display:flex;gap:6px;align-items:center}
+.query-row input{flex:1;padding:8px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;outline:none;transition:border 0.2s}
+.query-row input:focus{border-color:#1a237e}
+.query-row select{padding:8px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:12px;background:#fff}
+.query-row button{background:#1a237e;color:#fff;border:none;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.query-row button:hover{background:#283593}
+
+/* 实时动态 */
+.dynamic-section{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.dynamic-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.dynamic-header h3{font-size:13px;font-weight:700;color:#1a237e}
+.dynamic-count{font-size:11px;background:#2e7d32;color:#fff;padding:2px 10px;border-radius:8px;font-weight:600}
+.dynamic-list{font-size:12px}
+.dynamic-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #f0f0f0}
+.dynamic-item:last-child{border-bottom:none}
+.dynamic-item .name{font-weight:600}
+.dynamic-item .info{color:#888}
+.dynamic-item .progress{color:#2e7d32;font-weight:600}
+
+/* 会员链接区域 */
+.member-section{background:linear-gradient(135deg,#1b4332,#2d6a4f);border-radius:12px;padding:16px;margin-bottom:10px;color:#fff}
+.member-section h3{font-size:14px;font-weight:700;margin-bottom:8px}
+.member-links{display:flex;gap:8px}
+.member-link{flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:10px;text-align:center;cursor:pointer;text-decoration:none;color:#fff;transition:background 0.2s}
+.member-link:hover{background:rgba(255,255,255,0.2)}
+.member-link .m-icon{font-size:20px;display:block;margin-bottom:4px}
+.member-link .m-name{font-size:11px;font-weight:600}
+.member-link .m-desc{font-size:9px;opacity:0.7;margin-top:2px}
+
+/* 底部 */
+.footer{text-align:center;padding:16px;font-size:11px;color:#aaa}
+.footer strong{color:#1a237e}
+
+/* sticky按钮 */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;padding:10px 16px 14px;background:linear-gradient(transparent,#f0f4f0 25%);z-index:50}
+.sticky-bar .btn{display:block;width:100%;max-width:640px;margin:0 auto;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-align:center;background:linear-gradient(135deg,#1a237e,#283593);color:#fff}
+.sticky-bar .btn:active{opacity:0.9}
+
+/* 查询结果 */
+#queryResult{display:none;margin-bottom:10px}
+.qr-card{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.qr-card.success{border:1.5px solid #2e7d32}
+.qr-card.pending{border:1.5px dashed #f59e0b}
+
+/* Toast */
+#toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:200;display:none}
 </style>
 </head>
 <body>
 
-<div class="toast" id="toast"></div>
-
-<!-- ===== 首页 ===== -->
-<div class="page active" id="page-home">
-  <div class="header">
-    <h1>宇守信财税工具包</h1>
-    <p>40个Excel工具 · 财税+经营全覆盖</p>
+<!-- 品牌头 -->
+<div class="brand-top">
+  <div class="brand-logo">宇</div>
+  <div class="brand-info">
+    <div class="brand-name">宇守信财税</div>
+    <div class="brand-sub">18年财税实战 · 4000+企业信赖</div>
   </div>
+  <div class="brand-badge">三人拼团</div>
+</div>
 
-  <!-- 品牌信任条 -->
-  <div style="background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
-    <div style="width:36px;height:36px;background:#c62828;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:800;flex-shrink:0">宇</div>
-    <div style="flex:1">
-      <div style="font-size:13px;font-weight:600;color:#333">洪淳宇 · 18年财税实战</div>
-      <div style="font-size:11px;color:#888">北京乾坤生会计师事务所 | 宇守信品牌</div>
-    </div>
-    <div style="font-size:11px;color:#1a237e;font-weight:600;background:#e8eaf6;padding:4px 8px;border-radius:6px;white-space:nowrap">⭐ 2008年入行</div>
-  </div>
+<!-- 拼团横幅 -->
+<div class="hero">
+  <div class="hero-icon">🎗️</div>
+  <h1>3人成团 · 团长全额返</h1>
+  <p>宇守信财税工具包 · 拼团特惠</p>
+  <div class="brand-tag">宇守信财税 · 18年实战经验</div>
+</div>
 
-  <!-- 核心卖点一句话 -->
-  <div style="text-align:center;padding:8px 0 12px">
-    <div style="font-size:16px;font-weight:700;color:#1a237e">做财税18年，我把日常用的Excel都整理成了模板</div>
-    <div style="font-size:12px;color:#888;margin-top:4px">不用自己做表，替换数据直接出结果</div>
+<div class="container">
+
+  <!-- 价格 -->
+  <div class="price-section">
+    <div class="origin">原价 ¥99</div>
+    <div class="current">¥99 <small>/ 人</small></div>
+    <div class="rule">3人成团 · 团长返还 ¥99</div>
   </div>
 
   <!-- 痛点 -->
-  <div class="pain-box">
-    <h3>👋 这些财税问题，你有吗？</h3>
+  <div class="pain-points">
+    <h3>这些财税问题，您是否也遇到过？</h3>
     <div class="pain-grid">
-      <div class="pain-item">📋 发票红线不清，怕被稽查</div>
-      <div class="pain-item">📊 税负高低心里没底</div>
-      <div class="pain-item">💰 现金流吃紧不知能撑多久</div>
-      <div class="pain-item">🔍 研发费用归集怕出错</div>
-      <div class="pain-item">🏗️ 股权架构有隐患</div>
-      <div class="pain-item">🌍 跨境税务不知怎么合规</div>
-      <div class="pain-item">👤 高管个税45%不知道怎么降</div>
-      <div class="pain-item">📉 优惠政策不知享受了没</div>
+      <div class="pain-item">发票红线不清，怕被稽查</div>
+      <div class="pain-item">税负高低心里没底</div>
+      <div class="pain-item">现金流吃紧不知能撑多久</div>
+      <div class="pain-item">研发费用归集怕出错</div>
+      <div class="pain-item">股权架构存有隐患</div>
+      <div class="pain-item">跨境税务不知如何合规</div>
+      <div class="pain-item">高管个税不知道怎么降</div>
+      <div class="pain-item">优惠政策不知享受了没有</div>
     </div>
   </div>
 
-  <!-- 社会证明 -->
-  <div style="display:flex;gap:6px;margin-bottom:10px;font-size:11px;color:#888">
-    <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,0.05)">
-      <div style="font-size:16px;font-weight:700;color:#1a237e">40个</div>
-      <div>Excel工具</div>
+  <!-- 信任指标 -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="num">40</div>
+      <div class="label">Excel管理工具</div>
     </div>
-    <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,0.05)">
-      <div style="font-size:16px;font-weight:700;color:#1a237e">18年</div>
-      <div>财税实战经验</div>
+    <div class="trust-item">
+      <div class="num">18年</div>
+      <div class="label">一线财税实战</div>
     </div>
-    <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,0.05)">
-      <div style="font-size:16px;font-weight:700;color:#c62828">¥39</div>
-      <div>拼团价(原¥99)</div>
+    <div class="trust-item">
+      <div class="num hot">4000+</div>
+      <div class="label">企业客户信赖</div>
+    </div>
+    <div class="trust-item">
+      <div class="num hot">返¥99</div>
+      <div class="label">团长全额返还</div>
     </div>
   </div>
 
   <!-- 财会版 -->
-  <div class="section-card">
-    <div class="section-head">
-      <div><span style="font-size:20px">📋</span> <h3 style="display:inline;margin-left:4px">财会人员实务工具包</h3></div>
-      <div class="price"><div class="orig">¥99</div><div class="now">¥39</div></div>
+  <div class="pack-card">
+    <div class="pack-head">
+      <div><h3>财务人员实务工具包</h3><div class="tag">会计 · 代账 · 财务</div></div>
+      <div class="pack-price">¥99</div>
     </div>
-    <div class="section-body">
-      <div style="font-size:11px;color:#888;margin-bottom:6px">会计、财务、代账日常必备 · 20个Excel</div>
-      <div class="tool-grid">
-        <div class="tool-item blue">📅 税务提醒日历</div>
-        <div class="tool-item blue">🧮 税负计算器</div>
-        <div class="tool-item blue">📄 发票管理台账</div>
-        <div class="tool-item blue">📝 合同管理台账</div>
-        <div class="tool-item blue">💰 工资个税计算</div>
-        <div class="tool-item blue">🏦 社保核对表</div>
-        <div class="tool-item blue">🏭 固定资产管理</div>
-        <div class="tool-item blue">📦 存货管理表</div>
-        <div class="tool-item blue">💰 费用报销控制</div>
-        <div class="tool-item blue">🏛️ 银行余额调节</div>
-        <div class="tool-item blue">📊 现金流量表</div>
-        <div class="tool-item blue">📈 利润表分析</div>
-        <div class="tool-item blue">🔬 研发辅助账</div>
-        <div class="tool-item blue">📋 汇算清缴辅助</div>
-        <div class="tool-item blue">🔍 稽查自查清单</div>
-        <div class="tool-item blue">📑 凭证汇总表</div>
-        <div class="tool-item blue">📊 财务指标看板</div>
-        <div class="tool-item blue">🔄 跨年账务处理</div>
-        <div class="tool-item blue">📋 会计凭证审核</div>
-        <div class="tool-item blue">📅 月度结账清单</div>
-      </div>
+    <div class="pack-body">
+      <div class="tool-grid" id="toolFinance"></div>
     </div>
   </div>
 
   <!-- 老板版 -->
-  <div class="section-card">
-    <div class="section-head red">
-      <div><span style="font-size:20px">📊</span> <h3 style="display:inline;margin-left:4px">老板经营管理工具包</h3></div>
-      <div class="price"><div class="orig">¥99</div><div class="now">¥39</div></div>
+  <div class="pack-card">
+    <div class="pack-head red">
+      <div><h3>老板经营管理工具包</h3><div class="tag">总经理 · 决策层</div></div>
+      <div class="pack-price">¥99</div>
     </div>
-    <div class="section-body">
-      <div style="font-size:11px;color:#888;margin-bottom:6px">老板、总经理决策必备 · 20个Excel</div>
-      <div class="tool-grid">
-        <div class="tool-item red">📊 经营分析看板</div>
-        <div class="tool-item red">⚖️ 盈亏平衡计算</div>
-        <div class="tool-item red">💰 成本费用控制</div>
-        <div class="tool-item red">💧 现金流预测</div>
-        <div class="tool-item red">📞 应收账款催收</div>
-        <div class="tool-item red">🏆 供应商评估</div>
-        <div class="tool-item red">📋 绩效考核评分</div>
-        <div class="tool-item red">📐 预算编制执行</div>
-        <div class="tool-item red">📅 现金流日报</div>
-        <div class="tool-item red">📈 投资决策测算</div>
-        <div class="tool-item red">🏛️ 银行贷款申请</div>
-        <div class="tool-item red">💵 股东分红测算</div>
-        <div class="tool-item red">👥 用工成本分析</div>
-        <div class="tool-item red">🔍 税务风险预警</div>
-        <div class="tool-item red">📝 合同风险检查</div>
-        <div class="tool-item red">📋 会议管理纪要</div>
-        <div class="tool-item red">🏗️ 股权结构表</div>
-        <div class="tool-item red">📑 经营月报模板</div>
-        <div class="tool-item red">📊 预算执行跟踪</div>
-        <div class="tool-item red">🏥 企业体检清单</div>
-      </div>
+    <div class="pack-body">
+      <div class="tool-grid" id="toolBoss"></div>
     </div>
   </div>
 
-  <!-- 方案 -->
-  <div class="rule-card">
-    <div class="big">💰 一次拼团，团长免单</div>
-    <div style="display:flex;gap:6px;margin-top:10px">
-      <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">🎯</div>你开团付¥39
-      </div>
-      <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">👥</div>拉2个朋友各付¥39
-      </div>
-      <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">💰</div>满3人退你¥69
-      </div>
-      <div style="flex:1;background:rgba(255,255,255,0.12);border-radius:8px;padding:8px 4px;text-align:center;font-size:11px">
-        <div style="font-size:16px">📦</div>免费拿两套工具
-      </div>
+  <!-- 规则 -->
+  <div class="rule-section">
+    <div class="big">3人成团 · 团长全额返</div>
+    <div class="rule-steps">
+      <div class="rule-step"><span class="icon">1</span>你开团付¥99</div>
+      <div class="rule-step"><span class="icon">2</span>拉2位好友参团</div>
+      <div class="rule-step"><span class="icon">3</span>满3人退你¥99</div>
+      <div class="rule-step"><span class="icon">4</span>免费拿工具包</div>
     </div>
-    <div style="text-align:center;margin-top:8px;font-size:12px;opacity:0.85">第4人起团长有佣金 · 拉越多赚越多 · 终身免费更新</div>
+    <div class="rule-note">第4人起每增加1人赚¥10 · 上不封顶</div>
   </div>
 
-  <!-- 团长权益 -->
-  <div style="background:linear-gradient(135deg,#1565c0,#1976d2);color:#fff;border-radius:12px;padding:14px;margin-bottom:14px">
-    <div style="font-size:14px;font-weight:700;margin-bottom:6px">👑 团长专享权益</div>
-    <div style="font-size:12px;line-height:1.8;opacity:0.9">
-      ✅ 满3人返¥69，相当于免费拿工具包<br>
-      ✅ 后续更新免费，新增工具照发<br>
-      ✅ 永久佣金，每多1人分佣<br>
-      ✅ 可同时开财会版+老板版两个团
-    </div>
-  </div>
-
-  <!-- 付款提示 -->
-  <div style="text-align:center;margin-bottom:10px;font-size:11px;color:#aaa;line-height:1.6">
-    <strong style="color:#666">团长：</strong>加微信 hongchunyu042896 付¥39开团<br>
-    <strong style="color:#666">团员参团：</strong>加微信付¥39，备注「参团+团长昵称+版本」<br>
-    管理员确认后团长可查进度 · 满3人退¥69
-  </div>
-
-  <div style="height:80px"></div>
-</div>
-
-<!-- 固定底部按钮 -->
-<div class="sticky-btn" id="stickyBtn">
-  <button class="btn btn-primary" onclick="showPage('page-how')">🚀 我要开团 · 免费拿工具包</button>
-  <div style="text-align:center;margin-top:6px;display:flex;gap:10px;justify-content:center">
-    <a href="#" onclick="showPage('page-leader');return false" style="font-size:11px;color:#1a237e;text-decoration:none">👑 团长查进度</a>
-    <span style="color:#ddd">|</span>
-    <a href="#" onclick="showPage('page-admin');return false" style="font-size:11px;color:#999;text-decoration:none">管理员→</a>
-  </div>
-</div>
-
-<!-- ===== 玩法页 ===== -->
-<div class="page" id="page-how">
-  <div class="header"><h1>👑 开团三步走</h1><p>简单直接，今天就能拿到工具包</p></div>
-  <div class="step-card">
-    <div class="step-item">
-      <div class="step-num">1</div>
-      <div class="step-text"><div class="t">加微信 · 付¥39开团</div><div class="d">加洪淳宇微信 hongchunyu042896，付款¥39</div></div>
-    </div>
-    <div class="step-item">
-      <div class="step-num">2</div>
-      <div class="step-text"><div class="t">分享链接给朋友</div><div class="d">把页面发给朋友，让他们参团，各付¥39</div></div>
-    </div>
-    <div class="step-item">
-      <div class="step-num">3</div>
-      <div class="step-text"><div class="t">满3人→退你¥69</div><div class="d">满3人返还¥69，第4人起团长每单分¥20</div></div>
-    </div>
-  </div>
-  <div class="wechat-box">
-    <div class="label">客服微信</div>
-    <div class="id">hongchunyu042896</div>
-    <div class="tip">长按复制 → 去微信添加 → 发消息"开团"</div>
-  </div>
-  <button class="btn btn-secondary" onclick="copyWechat()">📋 复制微信号</button>
-
-  <!-- 操作说明 -->
-  <div style="background:#fff;border-radius:12px;padding:16px;margin-top:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
-    <div style="font-size:14px;font-weight:700;color:#1a237e;margin-bottom:10px">📝 操作说明</div>
-
-    <div style="font-size:13px;font-weight:600;color:#1565c0;margin-bottom:4px">👑 团长</div>
-    <div style="font-size:12px;color:#444;line-height:1.7;margin-bottom:10px;padding-left:8px;border-left:2px solid #1565c0">
-      ① 点「我要开团」→ 选财会版/老板版<br>
-      ② 加微信 hongchunyu042896 付¥39开团<br>
-      ③ 管理员确认后，你的团就建好了<br>
-      ④ 转发页面给朋友参团<br>
-      ⑤ 查进度：首页点「团长查进度」→输昵称+选版本
-    </div>
-
-    <div style="font-size:13px;font-weight:600;color:#c62828;margin-bottom:4px">👤 团员</div>
-    <div style="font-size:12px;color:#444;line-height:1.7;padding-left:8px;border-left:2px solid #c62828">
-      ① 加微信 hongchunyu042896 付¥39<br>
-      ② 付款备注写：<strong>参团xxx 财会版</strong>（xxx是团长昵称）<br>
-      ③ 管理员收到后更新团长参团人数<br>
-      ④ 团长自己能查到进度
+  <!-- 会员专区 -->
+  <div class="member-section">
+    <h3>宇守信会员 · 更多权益</h3>
+    <div class="member-links">
+      <a class="member-link" href="https://yushouxin-group.github.io/member-tools/" target="_blank" rel="noopener">
+        <span class="m-icon">🔧</span>
+        <span class="m-name">会员工具入口</span>
+        <span class="m-desc">专属工具 · 持续更新</span>
+      </a>
+      <a class="member-link" href="https://yushouxin-group.github.io/member-plans/" target="_blank" rel="noopener">
+        <span class="m-icon">👑</span>
+        <span class="m-name">会员方案</span>
+        <span class="m-desc">铜/银/金会员权益</span>
+      </a>
+      <a class="member-link" href="https://yushouxin-group.github.io/group-buy/" target="_blank" rel="noopener">
+        <span class="m-icon">🎯</span>
+        <span class="m-name">团长中心</span>
+        <span class="m-desc">查进度 · 赚佣金</span>
+      </a>
     </div>
   </div>
 
-  <div style="margin-top:24px"><button class="btn btn-outline btn-sm" onclick="showPage('page-home')">← 返回首页</button></div>
-</div>
+  <!-- 联系客服 -->
+  <div class="contact-section">
+    <div class="label">联系宇守信客服 · 开团</div>
+    <div class="contact-brand">宇守信财税</div>
+    <button class="contact-btn" onclick="copyContact()">📋 复制企微客服链接</button>
+    <div class="contact-tip">付款¥99后联系客服开团 · 备注「团长+昵称+版本」</div>
+  </div>
 
-<!-- ===== 团长查进度 ===== -->
-<div class="page" id="page-leader">
-  <div class="header"><h1>👑 我的拼团</h1><p>输入微信昵称，查看进度</p></div>
-  <div class="admin-area" style="border-color:#1a237e">
-    <div class="admin-row">
-      <input type="text" id="leaderQueryName" placeholder="输入昵称" style="flex:0 0 100px">
-      <select id="leaderQueryVersion" style="flex:0 0 90px;padding:6px;border:1.5px solid #ddd;border-radius:6px;font-size:12px">
-        <option value="finance">📋财会版</option>
-        <option value="boss">📊老板版</option>
+  <!-- 查进度 -->
+  <div class="query-section">
+    <h3>团长查进度</h3>
+    <div class="query-row">
+      <input id="qName" placeholder="团长昵称" maxlength="20">
+      <select id="qVer">
+        <option value="finance">财会版</option>
+        <option value="boss">老板版</option>
       </select>
-      <button class="btn btn-sm btn-primary" onclick="queryMyGroup()" style="width:60px">查</button>
+      <button onclick="queryGroup()">查询</button>
     </div>
   </div>
-  <div id="leaderPending" style="display:none;background:#fff8e1;border:1.5px dashed #ffb300;border-radius:12px;padding:16px;margin-bottom:14px;text-align:center">
-    <div style="font-size:36px">📱</div>
-    <div style="font-size:15px;font-weight:600;color:#e65100;margin:6px 0">你还没有开团</div>
-    <div style="font-size:13px;color:#888;margin-bottom:12px">付款¥39后联系管理员确认开团</div>
-    <div style="background:#fff;border-radius:8px;padding:12px;text-align:left;font-size:12px;color:#555;line-height:1.8">
-      1. 添加微信：<strong style="color:#1a237e">hongchunyu042896</strong><br>
-      2. 发消息"开团"→客服发付款码→付¥39<br>
-      3. 付款截图发给客服→客服确认→开团成功 🎉
+
+  <!-- 查询结果 -->
+  <div id="queryResult"></div>
+
+  <!-- 实时团动态 -->
+  <div class="dynamic-section">
+    <div class="dynamic-header">
+      <h3>正在拼团</h3>
+      <span class="dynamic-count" id="activeCount">0</span>
     </div>
-    <button class="btn btn-sm btn-outline" onclick="copyWechat()" style="margin-top:12px">📋 复制微信号去付款</button>
-  </div>
-  <div id="leaderResult" style="display:none">
-    <div class="progress-card">
-      <div class="num"><span id="leaderCountDisplay">0</span>人</div>
-      <div style="font-size:13px;color:#888;margin-top:2px">还差 <span id="leaderRemain" style="color:#c62828;font-weight:700">3</span> 人成团</div>
-      <div class="p-bar"><div class="p-bar-inner" id="leaderBar" style="width:0%"></div></div>
-    </div>
-    <div class="admin-area comm-box">
-      <h3>💰 我的佣金</h3>
-      <div class="comm-amt" id="leaderCommission">¥0</div>
-      <div style="font-size:12px;color:#888;margin-top:4px">已邀请 <span id="leaderInvited">0</span> 人 · 满3人后每多1人分¥20</div>
-      <div style="font-size:11px;color:#2e7d32;margin-top:6px;background:#e8f5e9;padding:6px 10px;border-radius:6px">👑 终身免费更新 · 新增工具照发不另收费</div>
-    </div>
-    <div class="success-box" id="leaderCompleted">
-      <div style="font-size:36px">🎉</div>
-      <div style="font-size:16px;font-weight:700;color:#2e7d32;margin-top:6px">拼团成功！</div>
-      <div style="font-size:13px;color:#555;margin-top:4px">团长¥69已返还，继续拉人分¥20/单</div>
-    </div>
-    <div id="leaderShare">
-      <p style="font-size:13px;color:#888;margin-bottom:6px">📤 分享这个页面给朋友参团：</p>
-      <div class="share-row">
-        <input type="text" id="leaderShareLink" readonly>
-        <button class="btn btn-sm btn-primary" onclick="copyLeaderLink()" style="width:80px">复制</button>
-      </div>
+    <div class="dynamic-list" id="activeGroups">
+      <div style="text-align:center;padding:10px;color:#aaa">暂无进行中的团</div>
     </div>
   </div>
-  <div style="margin-top:24px"><button class="btn btn-outline btn-sm" onclick="showPage('page-home')">← 返回首页</button></div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <strong>宇守信财税</strong> · 北京乾坤生会计师事务所<br>
+    18年财税实战 · 4000+企业信赖
+  </div>
 </div>
 
-<!-- ===== 管理后台 ===== -->
-<div class="page" id="page-admin">
-  <div class="header"><h1>📋 管理后台</h1><p>管理员专用</p></div>
-  <div class="admin-area" id="groupList">
-    <h3>当前进行中的团</h3>
-    <div class="admin-hint">收到团长付款后，在此记录参团人数。</div>
-    <div id="groupItems"><p style="font-size:13px;color:#888;text-align:center;padding:20px 0">暂无进行中的团</p></div>
-  </div>
-  <div class="admin-area">
-    <h3>➕ 新增/更新</h3>
-    <div class="admin-row">
-      <input type="text" id="adminGroupName" placeholder="团长昵称" style="flex:0 0 110px">
-      <select id="adminVersion" style="flex:0 0 90px;padding:6px;border:1.5px solid #ddd;border-radius:6px;font-size:12px">
-        <option value="finance" style="color:#1565c0">📋财会版</option>
-        <option value="boss" style="color:#c62828">📊老板版</option>
-      </select>
-      <input type="number" id="adminCount" placeholder="人数" min="0" max="99" style="flex:0 0 55px">
-      <button class="btn btn-sm btn-primary" onclick="updateGroupCount()" style="flex:0 0 50px">更新</button>
-    </div>
-    <div style="font-size:11px;color:#888">满3人自动成团，第4人起团长每单分¥20</div>
-  </div>
-  <div class="admin-area">
-    <h3>📊 结算汇总</h3>
-    <div style="font-size:13px;line-height:1.8" id="settlementSummary">
-      <div>总开团数：<span id="totalGroups">0</span></div>
-      <div>已成团：<span id="completedGroups">0</span></div>
-      <div>佣金总计：<span id="totalCommission">¥0</span></div>
-      <div>工具包发出：<span id="totalPackages">0</span> 份</div>
-    </div>
-  </div>
-  <div style="margin-top:24px"><button class="btn btn-outline btn-sm" onclick="showPage('page-home')">← 返回首页</button></div>
-  <div class="footer"><strong>宇守信财税</strong> · 北京乾坤生会计师事务所<br>客服微信：hongchunyu042896</div>
+<!-- Sticky -->
+<div class="sticky-bar">
+  <button class="btn" onclick="scrollToContact()">联系客服开团 · 全额返</button>
 </div>
+
+<div id="toast"></div>
 
 <script>
-const KEY='ysx_groups_v2';
-function gG(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
-function sG(g){localStorage.setItem(KEY,JSON.stringify(g))}
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
-  document.getElementById(id).classList.add('active')
-  if(id==='page-admin')refreshAdmin()
-  var s=document.getElementById('stickyBtn')
-  if(s)s.style.display=(id==='page-home')?'block':'none'
+const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5188' : (window.location.origin + '/api');
+
+const FINANCE_TOOLS = [
+  '税务提醒日历','税负计算器','发票管理台账','合同管理台账',
+  '工资个税计算','社保核对表','固定资产管理','存货管理表',
+  '费用报销控制','银行余额调节','现金流量表','利润表分析',
+  '研发辅助账','汇算清缴辅助','稽查自查清单','凭证汇总表',
+  '财务指标看板','跨年账务处理','会计凭证审核','月度结账清单'
+];
+
+const BOSS_TOOLS = [
+  '经营分析看板','盈亏平衡计算','成本费用控制','现金流预测',
+  '应收账款催收','供应商评估','绩效考核评分','预算编制执行',
+  '现金流日报','投资决策测算','银行贷款申请','股东分红测算',
+  '用工成本分析','税务风险预警','合同风险检查','会议管理纪要',
+  '股权结构表','经营月报模板','预算执行跟踪','企业体检清单'
+];
+
+// 渲染工具
+FINANCE_TOOLS.forEach(t => {
+  document.getElementById('toolFinance').innerHTML += '<div class="tool-item b">▸ '+t+'</div>';
+});
+BOSS_TOOLS.forEach(t => {
+  document.getElementById('toolBoss').innerHTML += '<div class="tool-item r">▸ '+t+'</div>';
+});
+
+function scrollToContact() {
+  document.querySelector('.contact-section').scrollIntoView({behavior:'smooth'});
 }
-function copyWechat(){
-  var w='hongchunyu042896'
-  navigator.clipboard.writeText(w).then(function(){showToast('✅ 微信号已复制')}).catch(function(){showToast('微信号：hongchunyu042896')})
+
+function copyContact() {
+  var txt = '宇守信财税客服：请添加企微 yushouxin-kefu';
+  navigator.clipboard.writeText(txt).then(function() {
+    showToast('✅ 客服信息已复制，请添加企微');
+  }).catch(function() {
+    showToast('客服：yushouxin-kefu（企微）');
+  });
 }
-function queryMyGroup(){
-  var n=document.getElementById('leaderQueryName').value.trim(),v=document.getElementById('leaderQueryVersion').value
-  if(!n){showToast('请输入昵称');return}
-  var g=gG().find(function(x){return x.leader===n&&x.version===v})
-  if(!g){document.getElementById('leaderPending').style.display='block';document.getElementById('leaderResult').style.display='none';return}
-  document.getElementById('leaderPending').style.display='none';document.getElementById('leaderResult').style.display='block'
-  document.getElementById('leaderCountDisplay').textContent=g.count
-  document.getElementById('leaderRemain').textContent=Math.max(0,3-g.count)
-  document.getElementById('leaderBar').style.width=Math.min(100,g.count/3*100)+'%'
-  document.getElementById('leaderCommission').textContent='¥'+g.commission
-  document.getElementById('leaderInvited').textContent=Math.max(0,g.count-1)
-  document.getElementById('leaderCompleted').style.display=g.completed?'block':'none'
-  document.getElementById('leaderShareLink').value=window.location.origin+window.location.pathname
-}
-function copyLeaderLink(){
-  var l=document.getElementById('leaderShareLink');l.select()
-  navigator.clipboard.writeText(l.value).then(function(){showToast('✅ 链接已复制')}).catch(function(){showToast('已选中链接')})
-}
-function updateGroupCount(){
-  var n=document.getElementById('adminGroupName').value.trim(),v=document.getElementById('adminVersion').value,c=parseInt(document.getElementById('adminCount').value)
-  if(!n){showToast('请输入昵称');return}
-  if(isNaN(c)||c<0){showToast('请输入有效人数');return}
-  var gs=gG(),g=gs.find(function(x){return x.leader===n&&x.version===v})
-  if(!g){g={leader:n,version:v,count:0,commission:0,completed:false,createdAt:Date.now()};gs.push(g)}
-  g.count=c
-  if(c>=3){g.completed=true;g.commission=c>3?(c-3)*20:0}else{g.completed=false;g.commission=0}
-  sG(gs);refreshAdmin();
-  showToast('✅ '+n+'的团已更新：'+c+'人参团')
-  document.getElementById('adminGroupName').value='';document.getElementById('adminCount').value=''
-}
-function refreshAdmin(){
-  var gs=gG(),c=document.getElementById('groupItems'),a=gs.filter(function(g){return!g.completed}),d=gs.filter(function(g){return g.completed})
-  if(a.length===0&&d.length===0){c.innerHTML='<p style="font-size:13px;color:#888;text-align:center;padding:20px 0">暂无拼团记录</p>'}
-  else{
-    var h=''
-    a.forEach(function(g){var r=Math.max(0,3-g.count);var vl=g.version==='boss'?'📊老板版':'📋财会版';h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+vl+'</span><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人</span></div><span class="admin-status waiting">还差'+r+'人'+(r===0?' 🎉':'')+'</span></div>'})
-    d.forEach(function(g){var vl=g.version==='boss'?'📊老板版':'📋财会版';h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0"><div><strong style="font-size:13px">'+g.leader+'</strong><span style="font-size:11px;color:#888;margin-left:6px">'+vl+'</span><span style="font-size:11px;color:#888;margin-left:6px">'+g.count+'人参团</span></div><span class="admin-status full">✅ 佣金¥'+g.commission+'</span></div>'})
-    c.innerHTML=h
-  }
-  document.getElementById('totalGroups').textContent=gs.length
-  document.getElementById('completedGroups').textContent=gs.filter(function(g){return g.completed}).length
-  document.getElementById('totalCommission').textContent='¥'+gs.reduce(function(s,g){return s+g.commission},0)
-  document.getElementById('totalPackages').textContent=gs.reduce(function(s,g){return s+g.count},0)
-}
+
 function showToast(msg){
-  var t=document.getElementById('toast');t.textContent=msg;t.style.display='block'
-  clearTimeout(t._timer);t._timer=setTimeout(function(){t.style.display='none'},2500)
+  var t=document.getElementById('toast');
+  if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:200';document.body.appendChild(t)}
+  t.textContent=msg;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(function(){t.style.display='none'},2500);
 }
+
+// 查询团长进度
+async function queryGroup() {
+  var n = document.getElementById('qName').value.trim();
+  var v = document.getElementById('qVer').value;
+  if (!n) { showToast('请输入昵称'); return; }
+  try {
+    var r = await fetch(API+'/api/group/query?leader='+encodeURIComponent(n)+'&version='+v);
+    var d = await r.json();
+    var el = document.getElementById('queryResult');
+    if (!d.ok) {
+      el.style.display='block';
+      el.innerHTML='<div class="qr-card pending"><div style="font-size:24px;margin-bottom:6px">🔍</div><div style="font-weight:600;color:#b45309;margin:4px 0">未找到该团</div><div style="font-size:12px;color:#888">还没有开团？联系客服付¥99开团</div></div>';
+      return;
+    }
+    var g = d.group;
+    if (g.completed) {
+      el.style.display='block';
+      el.innerHTML='<div class="qr-card success"><div style="font-size:24px;margin-bottom:6px">🎉</div><div style="font-size:15px;font-weight:700;color:#2e7d32;margin:4px 0">拼团成功！</div><div style="font-size:12px;color:#555">已有 '+g.count+' 人 · ¥99 已返还</div>'+(g.commission>0?'<div style="font-size:12px;color:#2e7d32;margin-top:4px">佣金累计 ¥'+g.commission+'</div>':'')+'</div>';
+    } else {
+      var pct = g.progress_pct || 0;
+      el.style.display='block';
+      el.innerHTML='<div class="qr-card"><div style="font-size:26px;font-weight:800;color:#1a237e">'+g.count+' / 3</div><div style="font-size:12px;color:#888">还差 <span style="color:#c62828;font-weight:700">'+g.needed+'</span> 人成团</div><div style="height:6px;background:#e0e0e0;border-radius:3px;margin:8px 0;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,#1a237e,#3949ab);width:'+pct+'%;border-radius:3px;transition:width 0.5s"></div></div></div>';
+    }
+  } catch(e) { showToast('查询失败，请稍后重试'); }
+}
+
+// 加载实时动态
+async function loadActive() {
+  try {
+    var r = await fetch(API+'/api/groups/active');
+    var d = await r.json();
+    if (!d.ok) return;
+    document.getElementById('activeCount').textContent = d.groups.length;
+    if (d.groups.length === 0) {
+      document.getElementById('activeGroups').innerHTML = '<div style="text-align:center;padding:10px;color:#aaa">暂无进行中的团</div>';
+      return;
+    }
+    var h = '';
+    d.groups.forEach(function(g){
+      h += '<div class="dynamic-item"><div><span class="name">'+g.leader+'</span> <span class="info">'+g.version_label+'</span></div><div><span class="progress">'+g.count+'人</span> <span class="info">还差'+g.needed+'人</span></div></div>';
+    });
+    document.getElementById('activeGroups').innerHTML = h;
+  } catch(e) {}
+}
+
+// 初始化
+loadActive();
+setInterval(loadActive, 10000);
 </script>
+
 </body>
 </html>

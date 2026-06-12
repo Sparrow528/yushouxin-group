@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇守信 · 会员工具入口</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f4f0;color:#333;padding-bottom:40px}
+.top{background:linear-gradient(135deg,#1b4332,#2d6a4f);color:#fff;padding:40px 20px 30px;text-align:center}
+.top h1{font-size:22px;font-weight:800;margin-bottom:6px}
+.top p{font-size:12px;opacity:0.8}
+.container{max-width:640px;margin:0 auto;padding:12px}
+.tool-cat{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.cat-head{background:#1a237e;color:#fff;padding:10px 14px;font-size:13px;font-weight:700}
+.cat-body{padding:10px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.tool-item{font-size:11px;padding:6px 8px;background:#f5f7fa;border-radius:5px;display:flex;align-items:center;gap:4px}
+.back-link{display:block;text-align:center;padding:16px;font-size:12px;color:#1a237e;text-decoration:none;font-weight:600}
+.back-link:hover{text-decoration:underline}
+.footer{text-align:center;padding:12px;font-size:10px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>会员工具入口</h1>
+  <p>宇守信财税 · 专属会员工具持续更新</p>
+</div>
+<div class="container">
+  <div class="tool-cat">
+    <div class="cat-head">财务日常工具</div>
+    <div class="cat-body"><div class="tool-grid" id="tools1"></div></div>
+  </div>
+  <div class="tool-cat">
+    <div class="cat-head">经营管理工具</div>
+    <div class="cat-body"><div class="tool-grid" id="tools2"></div></div>
+  </div>
+  <div class="tool-cat">
+    <div class="cat-head">税务筹划工具</div>
+    <div class="cat-body"><div class="tool-grid" id="tools3"></div></div>
+  </div>
+  <div class="tool-cat">
+    <div class="cat-head">海外投资工具</div>
+    <div class="cat-body"><div class="tool-grid" id="tools4"></div></div>
+  </div>
+  <a class="back-link" href="https://yushouxin-group.github.io/group-buy/">&larr; 返回拼团首页</a>
+</div>
+<div class="footer">宇守信财税 · 北京乾坤生会计师事务所</div>
+<script>
+const tools1 = ['工资个税计算器','社保核对表','发票管理台账','合同管理台账','银行余额调节表','费用报销控制表'];
+const tools2 = ['经营分析看板','现金流预测','应收账款催收','成本费用控制','盈亏平衡计算','预算编制执行'];
+const tools3 = ['税负计算器','研发辅助账','汇算清缴辅助','稽查自查清单','税务风险预警','优惠政策匹配'];
+const tools4 = ['ODI备案指南','跨境税务计算','境外投资架构','外汇管理工具','国别税制速查','出口退税辅助'];
+['tools1','tools2','tools3','tools4'].forEach((id,i)=>eval(id).forEach(t=>document.getElementById(id).innerHTML+='<div class="tool-item">&rtrif; '+t+'</div>'));
+</script>
+</body>
+</html>
