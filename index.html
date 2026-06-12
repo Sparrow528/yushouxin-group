@@ -238,7 +238,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
   <div style="text-align:center;margin-top:6px;display:flex;gap:10px;justify-content:center">
     <a href="#" onclick="showPage('page-leader');return false" style="font-size:11px;color:#1a237e;text-decoration:none">👑 团长查进度</a>
     <span style="color:#ddd">|</span>
-    <a href="#" onclick="showPage('page-admin');return false" style="font-size:11px;color:#999;text-decoration:none">管理员→</a>
+    <a href="#" onclick="enterAdmin();return false" style="font-size:11px;color:#999;text-decoration:none">管理员→</a>
   </div>
 </div>
 
@@ -342,6 +342,12 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 
 <script>
 const KEY='ysx_groups_v2';
+const ADMIN_PWD='ysx2026';
+function enterAdmin(){
+  var p=prompt('管理员密码：');
+  if(p===ADMIN_PWD)showPage('page-admin');
+  else if(p!==null)showToast('密码错误');
+}
 function gG(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
 function sG(g){localStorage.setItem(KEY,JSON.stringify(g))}
 function showPage(id){
