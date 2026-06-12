@@ -1,0 +1,24 @@
+{
+  "_说明": "开票二维码可配置公司信息",
+  "_格式": "按此JSON模板，改内容后运行 python3 generate.py 即可生成二维码+展示页",
+  "company": {
+    "name": "北京乾坤生会计师事务所有限责任公司",
+    "short_name": "北京乾坤生",
+    "tax_id": "91110105795101365D",
+    "address": "北京市北京经济技术开发区(通州)环科中路16号25幢3层302-3",
+    "bank": "友利银行（中国）有限公司北京望京支行",
+    "account": "100201009372"
+  },
+  "output": {
+    "dir": "output",
+    "qrcode_size": 280,
+    "qrcode_fill_color": "#1e3a5f",
+    "qrcode_bg_color": "#ffffff"
+  },
+  "style": {
+    "primary_color": "#1e3a5f",
+    "secondary_color": "#2a6496",
+    "bg_color": "#edf2f7",
+    "card_bg": "#ffffff"
+  }
+}
