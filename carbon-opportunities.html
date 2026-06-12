@@ -3,361 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>一带一路碳建设 · 国别机会与企业对接指南</title>
+<title>一带一路碳建设 · 国别项目机会</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;padding-bottom:40px}
 
-.top{background:linear-gradient(135deg,#064e3b,#0c4a6e);color:#fff;padding:40px 20px 30px;text-align:center}
-.top h1{font-size:22px;font-weight:800;letter-spacing:1px}
-.top .sub{font-size:13px;opacity:0.8;margin-top:6px}
-.top .brand{font-size:11px;background:rgba(255,255,255,0.12);display:inline-block;padding:3px 12px;border-radius:8px;margin-top:8px}
+/* 品牌头 */
+.brand-top{background:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #e0e8e0;position:sticky;top:0;z-index:100}
+.brand-logo{width:36px;height:36px;background:#c62828;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;flex-shrink:0;border:1px solid #b71c1c}
+.brand-info{flex:1}
+.brand-name{font-size:15px;font-weight:700;color:#064e3b}
+.brand-sub{font-size:11px;color:#888;margin-top:1px}
+
+/* 顶部大图 */
+.hero{background:linear-gradient(135deg,#064e3b 0%,#0c4a6e 60%,#1a237e 100%);color:#fff;padding:40px 20px;text-align:center}
+.hero h1{font-size:24px;font-weight:800;letter-spacing:1px}
+.hero p{font-size:13px;opacity:0.8;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero .badge{display:inline-block;font-size:10px;background:rgba(255,255,255,0.12);padding:3px 12px;border-radius:8px;margin-top:10px}
 
 .container{max-width:800px;margin:0 auto;padding:12px}
 
+/* 简介 */
+.intro{background:#fff;border-radius:12px;padding:18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.intro h2{font-size:16px;color:#064e3b;margin-bottom:8px}
+.intro p{font-size:11px;color:#4b5563;line-height:1.8}
+
 /* 国家卡片 */
-.country{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
-.country-head{background:linear-gradient(135deg,#1a237e,#283593);padding:14px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center}
-.country-head h2{font-size:16px;font-weight:700}
+.country{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.country-head{background:linear-gradient(135deg,#0c4a6e,#1e6f5c);padding:14px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.country-head h2{font-size:15px;font-weight:700}
 .country-head .tag{font-size:10px;background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:8px}
-.country-body{padding:12px 14px}
+.country-body{padding:10px 12px}
 
 /* 机会卡片 */
-.opp{
-  border:1px solid #e5e7eb;
-  border-radius:8px;
-  padding:12px;
-  margin-bottom:10px;
-  page-break-inside:avoid;
-}
-.opp h3{font-size:13px;font-weight:600;color:#064e3b;margin-bottom:4px}
-.opp .desc{font-size:11px;color:#4b5563;line-height:1.6}
+.opp{border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin-bottom:10px;page-break-inside:avoid}
+.opp h3{font-size:12px;font-weight:600;color:#064e3b;margin-bottom:4px}
+.opp .desc{font-size:10.5px;color:#4b5563;line-height:1.6}
 .opp .rec{font-size:10px;color:#6b7280;margin-top:6px;padding:5px 8px;background:#f0fdf4;border-radius:4px}
 .opp .rec strong{color:#047857}
+.rec-tag{display:inline-block;font-size:9.5px;background:#eff6ff;color:#1d4ed8;padding:2px 6px;border-radius:4px;margin:2px}
 
-/* 推荐企业标签 */
-.rec-tag{display:inline-block;font-size:10px;background:#eff6ff;color:#1d4ed8;padding:2px 6px;border-radius:4px;margin:2px}
-
-/* 筛选栏 */
-.filter-bar{background:#fff;border-radius:10px;padding:12px;margin-bottom:14px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+/* 筛选 */
+.filter-bar{background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .filter-bar .label{font-size:12px;color:#888;margin-right:4px}
 .filter-btn{font-size:11px;padding:5px 10px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;color:#374151}
-.filter-btn.active{background:#1a237e;color:#fff;border-color:#1a237e}
+.filter-btn.active{background:#0c4a6e;color:#fff;border-color:#0c4a6e}
 .filter-btn:hover{background:#f3f4f6}
-.filter-btn.active:hover{background:#283593}
+.filter-btn.active:hover{background:#1e6f5c}
+.search-input{flex:1;min-width:140px;padding:6px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:12px;outline:none}
+.search-input:focus{border-color:#0c4a6e}
 
-/* 行业标签 */
-.ind-tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:4px;font-weight:500}
-.ind-tag.energy{background:#fef3c7;color:#92400e}
-.ind-tag.agri{background:#d1fae5;color:#065f46}
-.ind-tag.infra{background:#dbeafe;color:#1e40af}
-.ind-tag.manu{background#ede9fe;color:#5b21b6}
-.ind-tag.env{background:#fce7f3;color:#9d174d}
-.ind-tag.fin{background:#e0e7ff;color:#3730a3}
-
+/* 底部 */
 .footer{text-align:center;padding:20px;font-size:10px;color:#aaa}
-
-/* 搜索框 */
-.search-input{flex:1;min-width:150px;padding:6px 10px;border:1.5px solid #ddd;border-radius:6px;font-size:12px;outline:none}
-.search-input:focus{border-color:#1a237e}
 </style>
 </head>
 <body>
 
-<div class="top">
-  <h1>一带一路碳建设项目机会</h1>
-  <div class="sub">基于商务部培训中心研修班资料 · 国别分析与推荐企业对接</div>
-  <div class="brand">宇守信财税 · 海外投资咨询</div>
+<div class="brand-top">
+  <div class="brand-logo">宇</div>
+  <div class="brand-info">
+    <div class="brand-name">宇守信财税</div>
+    <div class="brand-sub">海外投资咨询 · ODI · 一带一路</div>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>一带一路 · 碳建设国别项目机会</h1>
+  <p>基于商务部培训中心一带一路碳建设研修班国别分析，整理9个目标国的具体项目清单，标注推荐对接中国企业</p>
+  <div class="badge">宇守信财税 · 海外投资咨询</div>
 </div>
 
 <div class="container">
 
+  <!-- 介绍 -->
+  <div class="intro">
+    <h2>关于这份资料</h2>
+    <p>本文档基于商务部培训中心官方培训班材料整理。研修班学员来自9个国家/地区的政府核心部门——经济部、能源部、公共工程部、财政部、交通部等政策制定与项目发包机关。每个国家均分析了政策环境、具体项目需求及合作模式，并标注了已在该区域有业务布局的中国企业作为对接参考。</p>
+    <p style="margin-top:6px">如需协助对接目标国官员、准备参会材料或定制合作策略，请联系宇守信财税海外投资咨询团队。</p>
+  </div>
+
   <!-- 筛选 -->
-  <div class="filter-bar" id="filterBar">
+  <div class="filter-bar">
     <span class="label">行业：</span>
     <button class="filter-btn active" onclick="filterInd(this,'all')">全部</button>
     <button class="filter-btn" onclick="filterInd(this,'energy')">能源</button>
-    <button class="filter-btn" onclick="filterInd(this,'agri')">农业</button>
     <button class="filter-btn" onclick="filterInd(this,'infra')">基建</button>
     <button class="filter-btn" onclick="filterInd(this,'manufacturing')">制造</button>
     <button class="filter-btn" onclick="filterInd(this,'env')">环保</button>
-    <span class="label" style="margin-left:10px">搜索：</span>
+    <span class="label" style="margin-left:8px">搜索：</span>
     <input class="search-input" id="searchInput" placeholder="企业名、国别..." oninput="filterSearch()">
   </div>
 
-  <!-- ===== 土耳其 ===== -->
-  <div class="country" data-country="土耳其" data-industry="all">
-    <div class="country-head"><h2>🇹🇷 土耳其</h2><span class="tag">欧亚枢纽</span></div>
+  <!-- 土耳其 -->
+  <div class="country" data-country="土耳其">
+    <div class="country-head"><h2>土耳其</h2><span class="tag">欧亚枢纽 · 能源转型</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy manufacturing">
+      <div class="opp" data-ind="energy manufacturing">
         <h3>光伏电站EPC总包（GW级YEKA招标）</h3>
-        <div class="desc">土耳其YEKA模式下的大型光伏电站招标，规模达GW级。要求EPC同时具备融资能力和本地分包管理经验。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">中国能建</span><span class="rec-tag">葛洲坝国际</span></div>
+        <div class="desc">土耳其YEKA模式大规模光伏电站招标。要求EPC兼具融资能力和本地分包管理经验。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">中国能建</span><span class="rec-tag">葛洲坝国际</span></div>
       </div>
-
-      <div class="opp" data-industry="energy manufacturing">
+      <div class="opp" data-ind="energy manufacturing">
         <h3>光伏组件与逆变器供应</h3>
-        <div class="desc">土耳其本土光伏产能虽大，但仍需高效N型TOPCon/HJT组件及大功率组串式逆变器（用于地面电站）。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">隆基绿能</span><span class="rec-tag">阳光电源</span><span class="rec-tag">华为数字能源</span></div>
+        <div class="desc">需高效N型TOPCon/HJT组件及大功率逆变器。土耳其本土产能虽大但高端产品依赖进口。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">隆基绿能</span><span class="rec-tag">阳光电源</span><span class="rec-tag">华为数字能源</span></div>
       </div>
-
-      <div class="opp" data-industry="energy manufacturing">
+      <div class="opp" data-ind="energy">
         <h3>储能系统集成</h3>
-        <div class="desc">土耳其2030年储能目标10GW，关注磷酸铁锂电池、工商业储能柜及光储一体化方案。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">宁德时代</span><span class="rec-tag">比亚迪储能</span><span class="rec-tag">阳光新能源</span></div>
+        <div class="desc">土耳其2030年储能目标10GW。关注磷酸铁锂电池、工商业储能柜及光储一体化方案。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">宁德时代</span><span class="rec-tag">比亚迪储能</span><span class="rec-tag">阳光新能源</span></div>
       </div>
-
-      <div class="opp" data-industry="infra">
+      <div class="opp" data-ind="infra">
         <h3>跨区域电网升级改造</h3>
         <div class="desc">土耳其电网升级改造及黑海风电送出线路建设。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">国网国际</span><span class="rec-tag">中电国际</span></div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">国网国际</span><span class="rec-tag">中电国际</span></div>
       </div>
-
-      <div class="opp" data-industry="agri">
+      <div class="opp" data-ind="infra env">
         <h3>农业水利与土地整治</h3>
-        <div class="desc">参与东南部GAP项目中的灌溉渠系改造、盐碱地治理。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国中车（水务板块）</span><span class="rec-tag">中工国际</span></div>
+        <div class="desc">东南部GAP项目灌溉渠系改造、盐碱地治理。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国中车（水务）</span><span class="rec-tag">中工国际</span></div>
       </div>
-
-      <div class="opp" data-industry="energy agri">
-        <h3>氢能设备制造</h3>
-        <div class="desc">土耳其绿氢规划明确，急需碱性电解槽、PEM电解槽及储氢罐。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">隆基氢能</span><span class="rec-tag">阳光氢能</span><span class="rec-tag">派瑞氢能</span></div>
-      </div>
-
     </div>
   </div>
 
-  <!-- ===== 柬埔寨 ===== -->
-  <div class="country" data-country="柬埔寨" data-industry="all">
-    <div class="country-head"><h2>🇰🇭 柬埔寨</h2><span class="tag">高速增长</span></div>
+  <!-- 柬埔寨 -->
+  <div class="country" data-country="柬埔寨">
+    <div class="country-head"><h2>柬埔寨</h2><span class="tag">高速增长 · 绿色转型</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="infra">
+      <div class="opp" data-ind="infra">
         <h3>西哈努克港多功能码头扩建</h3>
-        <div class="desc">包含绿色智慧港口建设。中国企业可提供从设计到EPC总包的完整方案。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国交建</span><span class="rec-tag">中国港湾</span></div>
+        <div class="desc">含绿色智慧港口建设。中国企业可提供从设计到EPC总包完整方案。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国交建</span><span class="rec-tag">中国港湾</span></div>
       </div>
-
-      <div class="opp" data-industry="energy">
-        <h3>大型光伏电站+储能系统</h3>
-        <div class="desc">磅清扬省、上丁省建设总装机2GW的光伏电站，配套200MW/800MWh磷酸铁锂储能系统。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">宁德时代</span><span class="rec-tag">阳光电源</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>大型光伏电站+储能系统 2GW</h3>
+        <div class="desc">磅清扬省、上丁省建设总装机2GW光伏电站，配套200MW/800MWh储能系统。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">宁德时代</span><span class="rec-tag">阳光电源</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
-        <h3>森林碳汇项目（REDD+）</h3>
-        <div class="desc">柬埔寨拥有230万公顷热带雨林。中柬合作开展蒙多基里省10万公顷森林碳汇项目，开发期20年，预计产生500万吨CO₂减排量。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">华测检测</span></div>
+      <div class="opp" data-ind="env">
+        <h3>森林碳汇REDD+项目 10万公顷</h3>
+        <div class="desc">蒙多基里省森林碳汇项目，开发期20年，预计500万吨CO₂减排量。柬埔寨230万公顷热带雨林资源。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">华测检测</span></div>
       </div>
-
-      <div class="opp" data-industry="infra">
+      <div class="opp" data-ind="infra env">
         <h3>经济特区零碳园区建设</h3>
-        <div class="desc">西哈努克港经济特区（SSEZ）三期扩建——光伏新材料专区。中国可提供智能微电网、工业余热回收系统等技术方案。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国建筑</span><span class="rec-tag">华为数字能源</span></div>
+        <div class="desc">西哈努克港经济特区三期扩建——光伏新材料专区。智能微电网、工业余热回收系统。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国建筑</span><span class="rec-tag">华为数字能源</span></div>
       </div>
-
-      <div class="opp" data-industry="manufacturing">
-        <h3>电动车充电站网络</h3>
-        <div class="desc">金边、西港、暹粒建设300个快充站及相关配套设施。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">特来电</span><span class="rec-tag">星星充电</span></div>
-      </div>
-
     </div>
   </div>
 
-  <!-- ===== 尼日利亚 ===== -->
-  <div class="country" data-country="尼日利亚" data-industry="all">
-    <div class="country-head"><h2>🇳🇬 尼日利亚</h2><span class="tag">非洲第一</span></div>
+  <!-- 尼日利亚 -->
+  <div class="country" data-country="尼日利亚">
+    <div class="country-head"><h2>尼日利亚</h2><span class="tag">非洲第一 · 基建缺口</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>天然气清洁利用设施建设</h3>
-        <div class="desc">尼日利亚油气田每年燃烧约70亿立方米伴生气（占全球10%）。中国可输出天然气液化及碳捕集技术。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中石油</span><span class="rec-tag">中海油</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>天然气清洁利用与碳捕集</h3>
+        <div class="desc">油气田年燃烧70亿立方米伴生气（占全球10%）。中国可输出天然气液化及碳捕集技术。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中石油</span><span class="rec-tag">中海油</span></div>
       </div>
-
-      <div class="opp" data-industry="energy">
+      <div class="opp" data-ind="energy">
         <h3>卡诺州1GW太阳能+储能电站</h3>
-        <div class="desc">配套碳信用开发。填补巨大的基建与能源鸿沟，建立长期合作机制。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">隆基绿能</span></div>
+        <div class="desc">配套碳信用开发。填补巨大基建与能源鸿沟，建立长期合作机制。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">隆基绿能</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
+      <div class="opp" data-ind="manufacturing env">
         <h3>水泥厂节能改造</h3>
-        <div class="desc">Dangote集团、Lafarge水泥厂的预热器升级、替代燃料系统及余热发电改造，降低熟料电耗15%。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中材国际</span><span class="rec-tag">中建材</span></div>
+        <div class="desc">Dangote/Lafarge水泥厂预热器升级、替代燃料系统及余热发电，降低熟料电耗15%。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中材国际</span><span class="rec-tag">中建材</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
+      <div class="opp" data-ind="env">
         <h3>拉各斯垃圾填埋气发电</h3>
-        <div class="desc">年减排200万吨CO₂。中国提供垃圾分拣及热解气化技术。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">光大环境</span><span class="rec-tag">中国天楹</span></div>
+        <div class="desc">年减排200万吨CO₂。垃圾分拣及热解气化技术。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">光大环境</span><span class="rec-tag">中国天楹</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 南非 ===== -->
-  <div class="country" data-country="南非" data-industry="all">
-    <div class="country-head"><h2>🇿🇦 南非</h2><span class="tag">能源转型</span></div>
+  <!-- 南非 -->
+  <div class="country" data-country="南非">
+    <div class="country-head"><h2>南非</h2><span class="tag">能源转型 · 高端制造</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>REIPPPP第7-8轮风电/光伏项目EPC</h3>
-        <div class="desc">南非长期购电协议（PPA）招标，大规模可再生能源项目。阳光电源已完成超1GW装机。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">阳光电源</span><span class="rec-tag">阿特斯</span><span class="rec-tag">金风科技</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>REIPPPP风电/光伏项目EPC</h3>
+        <div class="desc">南非长期购电协议（PPA）招标大规模可再生能源项目。阳光电源已完成超1GW装机。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">阳光电源</span><span class="rec-tag">阿特斯</span><span class="rec-tag">金风科技</span></div>
       </div>
-
-      <div class="opp" data-industry="manufacturing">
+      <div class="opp" data-ind="energy manufacturing">
         <h3>东开普省绿色氢能枢纽</h3>
-        <div class="desc">含Coega产业园可行性研究阶段。南非《氢能社会路线图》明确打造全球绿氢出口中心。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">隆基氢能</span><span class="rec-tag">阳光氢能</span></div>
+        <div class="desc">南非《氢能社会路线图》明确打造全球绿氢出口中心。含Coega产业园可行性研究。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">隆基氢能</span><span class="rec-tag">阳光氢能</span></div>
       </div>
-
-      <div class="opp" data-industry="infra">
-        <h3>电动公交车试点+充电桩网络</h3>
-        <div class="desc">约翰内斯堡电动公交车试点项目，包括配套充电桩建设。比亚迪储能系统可参与。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">比亚迪</span><span class="rec-tag">特来电</span></div>
+      <div class="opp" data-ind="infra manufacturing">
+        <h3>绿钢产业链项目</h3>
+        <div class="desc">使用绿氢还原替代部分高炉产能（Saldanha钢厂等）。南非低碳钢铁转型规划。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国中冶</span><span class="rec-tag">宝武集团</span></div>
       </div>
-
-      <div class="opp" data-industry="infra manufacturing">
-        <h3>「绿钢」产业链项目</h3>
-        <div class="desc">使用绿氢还原替代部分现有高炉产能（如Saldanha钢厂）。南非规划低碳钢铁转型。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国中冶</span><span class="rec-tag">宝武集团</span></div>
+      <div class="opp" data-ind="infra">
+        <h3>电动公交车试点+充电桩</h3>
+        <div class="desc">约翰内斯堡电动公交车试点，配套充电桩网络。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">比亚迪</span><span class="rec-tag">特来电</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 古巴 ===== -->
-  <div class="country" data-country="古巴" data-industry="all">
-    <div class="country-head"><h2>🇨🇺 古巴</h2><span class="tag">加勒比支点</span></div>
+  <!-- 古巴 -->
+  <div class="country" data-country="古巴">
+    <div class="country-head"><h2>古巴</h2><span class="tag">加勒比支点 · 改革中</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>100-200MW地面光伏电站EPC</h3>
-        <div class="desc">在古巴东部（奥尔金省、圣地亚哥省）建设，为现有电站提供智能化运维服务。PPA最长25年。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">正泰新能源</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>100-200MW光伏电站EPC</h3>
+        <div class="desc">古巴东部建设，PPA最长25年。为现有电站提供智能化运维服务。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">正泰新能源</span></div>
       </div>
-
-      <div class="opp" data-industry="manufacturing">
+      <div class="opp" data-ind="manufacturing">
         <h3>老旧工业节能改造</h3>
-        <div class="desc">水泥厂、钢厂电机系统、空压机、锅炉节能改造。哈瓦那公共建筑LED照明及智能能源管理平台。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中材国际</span><span class="rec-tag">华为数字能源</span></div>
+        <div class="desc">水泥厂、钢厂电机系统、空压机改造。哈瓦那公共建筑LED照明及智能能源管理。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中材国际</span><span class="rec-tag">华为数字能源</span></div>
       </div>
-
-      <div class="opp" data-industry="energy">
-        <h3>生物质热电联产（甘蔗渣利用）</h3>
-        <div class="desc">依托古巴糖业废弃物，在糖厂周边建设5-10MW生物质热电联产项目。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">光大环境</span><span class="rec-tag">中国天楹</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>糖厂生物质热电联产</h3>
+        <div class="desc">依托古巴甘蔗渣资源，建设5-10MW生物质热电联产项目。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">光大环境</span><span class="rec-tag">中国天楹</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 巴巴多斯 ===== -->
-  <div class="country" data-country="巴巴多斯" data-industry="all">
-    <div class="country-head"><h2>🇧🇧 巴巴多斯</h2><span class="tag">100%绿能目标</span></div>
+  <!-- 巴巴多斯 -->
+  <div class="country" data-country="巴巴多斯">
+    <div class="country-head"><h2>巴巴多斯</h2><span class="tag">100%绿能 · 小而美</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>分布式光伏+电池储能系统</h3>
-        <div class="desc">城镇屋顶光伏、农业光伏（圣菲利普、圣詹姆斯地区）及配套电池储能系统。计划2030年实现100%可再生能源发电。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">正泰新能源</span><span class="rec-tag">宁德时代</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>分布式光伏+电池储能</h3>
+        <div class="desc">城镇屋顶光伏、农业光伏及配套储能系统。计划2030年实现100%可再生能源发电。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">正泰新能源</span><span class="rec-tag">宁德时代</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
-        <h3>加勒比海沿岸蓝碳项目</h3>
-        <div class="desc">预计每年可吸收200万吨CO₂。红树林蓝碳项目可开发VCS标准碳信用。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">北京绿色交易所</span></div>
+      <div class="opp" data-ind="env">
+        <h3>加勒比海蓝碳项目</h3>
+        <div class="desc">预计每年吸收200万吨CO₂。红树林蓝碳项目可开发VCS标准碳信用。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">北京绿色交易所</span></div>
       </div>
-
-      <div class="opp" data-industry="infra">
-        <h3>电动巴士替换</h3>
+      <div class="opp" data-ind="infra">
+        <h3>电动巴士替换计划</h3>
         <div class="desc">首都布里奇敦公交系统首批50-100辆电动巴士，配套充电桩。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">比亚迪</span><span class="rec-tag">宇通客车</span></div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">比亚迪</span><span class="rec-tag">宇通客车</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 约旦 ===== -->
-  <div class="country" data-country="约旦" data-industry="all">
-    <div class="country-head"><h2>🇯🇴 约旦</h2><span class="tag">中东绿能</span></div>
+  <!-- 约旦 -->
+  <div class="country" data-country="约旦">
+    <div class="country-head"><h2>约旦</h2><span class="tag">中东绿能 · 政策稳定</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>马安太阳能产业园三期（300MW）</h3>
-        <div class="desc">约旦可再生能源目标2030年提升至50%。马安开发区内企业享10年所得税全免、土地租金优惠。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">正泰新能源</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>马安太阳能产业园300MW</h3>
+        <div class="desc">马安开发区享10年所得税全免、土地租金优惠。2030年可再生能源目标50%。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中国电建</span><span class="rec-tag">正泰新能源</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
-        <h3>水务处理及循环利用</h3>
-        <div class="desc">约旦极度缺水，要求项目自建水循环设施。海水淡化、智能灌溉系统需求巨大。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">大禹节水</span><span class="rec-tag">碧水源</span></div>
+      <div class="opp" data-ind="env">
+        <h3>水务处理与循环利用</h3>
+        <div class="desc">约旦极度缺水。海水淡化、智能灌溉系统需求巨大，项目须自建水循环设施。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">大禹节水</span><span class="rec-tag">碧水源</span></div>
       </div>
-
-      <div class="opp" data-industry="energy">
+      <div class="opp" data-ind="energy">
         <h3>绿氢出口项目</h3>
-        <div class="desc">约旦与欧盟签约1.3亿欧元绿氢出口协议，计划启动亚喀巴绿氢厂建设（年产能5万吨）。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">隆基氢能</span><span class="rec-tag">派瑞氢能</span></div>
+        <div class="desc">与欧盟签约1.3亿欧元绿氢出口协议。亚喀巴绿氢厂年产能5万吨。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">隆基氢能</span><span class="rec-tag">派瑞氢能</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 赞比亚 ===== -->
-  <div class="country" data-country="赞比亚" data-industry="all">
-    <div class="country-head"><h2>🇿🇲 赞比亚</h2><span class="tag">铜矿之国</span></div>
+  <!-- 赞比亚 -->
+  <div class="country" data-country="赞比亚">
+    <div class="country-head"><h2>赞比亚</h2><span class="tag">铜矿之国 · 矿绿结合</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="energy">
-        <h3>卡里巴湖东岸光伏200MW</h3>
-        <div class="desc">光伏-储能混合电站，替代水电依赖。下凯富峡光伏-储能混合电站。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">阳光电源</span><span class="rec-tag">宁德时代</span></div>
+      <div class="opp" data-ind="energy">
+        <h3>卡里巴湖岸光伏200MW</h3>
+        <div class="desc">光伏-储能混合电站，替代水电依赖。适合有矿业背景的EPC企业。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">阳光电源</span><span class="rec-tag">宁德时代</span></div>
       </div>
-
-      <div class="opp" data-industry="env">
-        <h3>基特韦铜矿绿色微电网</h3>
-        <div class="desc">矿业绿色化改造项目，利用矿业合作基础拓展新能源与碳汇合作。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">华为数字能源</span></div>
+      <div class="opp" data-ind="env">
+        <h3>铜矿绿色微电网</h3>
+        <div class="desc">基特韦铜矿绿色化改造。利用矿业合作基础拓展新能源与碳汇合作。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">华为数字能源</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- ===== 非盟 ===== -->
-  <div class="country" data-country="非盟" data-industry="all">
-    <div class="country-head"><h2>🌍 非洲联盟</h2><span class="tag">多边合作</span></div>
+  <!-- 非盟 -->
+  <div class="country" data-country="非盟">
+    <div class="country-head"><h2>非洲联盟</h2><span class="tag">多边 · 统一市场</span></div>
     <div class="country-body">
-
-      <div class="opp" data-industry="fin">
-        <h3>非洲大陆碳信用市场（ACMI）</h3>
-        <div class="desc">AUC推动建立统一碳市场。中国可在碳标准互认、碳汇开发方法论、碳交易平台技术方面提供支持。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">北京绿色交易所</span><span class="rec-tag">华测检测</span></div>
+      <div class="opp" data-ind="fin">
+        <h3>非洲大陆碳信用市场ACMI</h3>
+        <div class="desc">AUC推动统一碳市场。中国可在碳标准互认、碳汇开发方法论、交易平台技术方面提供支持。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">中碳登</span><span class="rec-tag">北京绿色交易所</span><span class="rec-tag">华测检测</span></div>
       </div>
-
-      <div class="opp" data-industry="energy">
+      <div class="opp" data-ind="energy">
         <h3>可再生能源离网方案</h3>
-        <div class="desc">针对5亿+无电人口，AUC支持「非洲最小电网计划」。模块化光储系统、智能微电网有巨大市场。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">华为数字能源</span><span class="rec-tag">阳光电源</span></div>
+        <div class="desc">针对5亿+无电人口。模块化光储系统、智能微电网。</div>
+        <div class="rec"><strong>推荐对接：</strong><span class="rec-tag">华为数字能源</span><span class="rec-tag">阳光电源</span></div>
       </div>
-
-      <div class="opp" data-industry="agri">
-        <h3>气候智能农业计划</h3>
-        <div class="desc">AUC项目。中国可提供数字化监测、抗旱作物、碳汇林（红树林、桉树）技术。</div>
-        <div class="rec"><strong>推荐企业：</strong><span class="rec-tag">大禹节水</span><span class="rec-tag">极飞科技</span></div>
-      </div>
-
     </div>
   </div>
 
   <div class="footer">
     <strong>宇守信财税</strong> · 北京乾坤生会计师事务所<br>
-    基于商务部培训中心官方培训材料整理 · 数据来源：一带一路碳建设研修班国别分析 · 2026
+    基于商务部培训中心官方培训材料整理 · 一带一路碳建设研修班国别分析 · 2026
   </div>
 </div>
 
@@ -365,14 +317,12 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 function filterInd(btn, ind) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.country').forEach(c => c.style.display = 'block');
   document.querySelectorAll('.opp').forEach(o => {
     if (ind === 'all') { o.style.display = 'block'; return; }
-    var inds = o.getAttribute('data-industry') || '';
+    var inds = o.getAttribute('data-ind') || '';
     o.style.display = inds.indexOf(ind) >= 0 ? 'block' : 'none';
   });
 }
-
 function filterSearch() {
   var q = document.getElementById('searchInput').value.trim().toLowerCase();
   document.querySelectorAll('.opp').forEach(o => {
