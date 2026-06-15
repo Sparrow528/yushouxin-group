@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>企业财税顾问会员 — 宇守信咨询</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: #f5f7fa; color: #1a1a2e;
+  line-height: 1.6;
+}
+/* ===== 顶部Banner ===== */
+.hero {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white; padding: 48px 20px 36px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(99,102,241,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero .brand { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 12px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; position: relative; }
+.hero .subtitle { font-size: 15px; opacity: 0.85; position: relative; }
+.hero .tagline {
+  display: inline-block; margin-top: 16px;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;
+  padding: 6px 18px; font-size: 12px; opacity: 0.9;
+}
+/* ===== 导航 ===== */
+.nav { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.nav a {
+  flex: 1; text-align: center; padding: 14px 4px; font-size: 13px; font-weight: 500;
+  color: #666; text-decoration: none; border-bottom: 3px solid transparent; transition: all .2s;
+}
+.nav a:hover, .nav a.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+/* ===== 通用区块 ===== */
+.section { padding: 40px 16px; max-width: 1000px; margin: 0 auto; }
+.section-title { text-align: center; margin-bottom: 32px; }
+.section-title h2 { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+.section-title p { font-size: 14px; color: #888; }
+/* ===== 三档对比卡片 ===== */
+.plans { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.plan {
+  flex: 1; min-width: 260px; max-width: 320px;
+  background: white; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all .3s;
+  position: relative;
+}
+.plan:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.plan.popular { border: 2px solid #4f46e5; }
+.plan .badge {
+  position: absolute; top: 12px; right: 12px;
+  background: #4f46e5; color: white; font-size: 11px; padding: 3px 10px;
+  border-radius: 12px; font-weight: 600;
+}
+.plan-header {
+  padding: 28px 20px 20px; text-align: center;
+}
+.plan-header .level { font-size: 13px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+.plan-header .level.copper { color: #b45309; }
+.plan-header .level.silver { color: #64748b; }
+.plan-header .level.gold { color: #b8860b; }
+.plan-header .price { font-size: 36px; font-weight: 800; color: #1a1a2e; margin: 8px 0 4px; }
+.plan-header .price small { font-size: 16px; font-weight: 400; color: #888; }
+.plan-header .unit { font-size: 13px; color: #888; }
+.plan-header .target { font-size: 12px; color: #999; margin-top: 8px; }
+.plan-body { padding: 0 20px 20px; }
+.plan-body ul { list-style: none; }
+.plan-body li {
+  padding: 8px 0; font-size: 13px; color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.plan-body li:last-child { border-bottom: none; }
+.plan-body li .icon { color: #4f46e5; flex-shrink: 0; }
+.plan-body li.no { color: #ccc; }
+.plan-body li.no .icon { color: #ddd; }
+.plan-footer { padding: 0 20px 24px; text-align: center; }
+.btn {
+  display: inline-block; padding: 12px 32px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: all .2s; cursor: pointer; border: none;
+}
+.btn-primary { background: #4f46e5; color: white; }
+.btn-primary:hover { background: #4338ca; }
+.btn-outline { background: white; color: #4f46e5; border: 2px solid #4f46e5; }
+.btn-outline:hover { background: #f5f3ff; }
+/* ===== 服务清单对比（折叠表格） ===== */
+.compare-section { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.compare-header {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  background: #f8f9fc; padding: 14px 16px; font-weight: 600; font-size: 13px;
+  border-bottom: 2px solid #eef0f4;
+}
+.compare-row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 12px 16px; font-size: 13px; border-bottom: 1px solid #f0f0f0;
+  transition: background .15s;
+}
+.compare-row:hover { background: #fafaff; }
+.compare-row:last-child { border-bottom: none; }
+.compare-row .service-name { color: #333; font-weight: 500; }
+.compare-row .yes { color: #059669; font-weight: 600; text-align: center; }
+.compare-row .no { color: #d1d5db; text-align: center; }
+.compare-row .detail { color: #4f46e5; text-align: center; font-size: 12px; }
+/* ===== 合作流程 ===== */
+.steps { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.step {
+  flex: 1; min-width: 150px; max-width: 180px;
+  background: white; border-radius: 12px; padding: 20px 16px; text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.step .num {
+  width: 36px; height: 36px; line-height: 36px; border-radius: 50%;
+  background: #4f46e5; color: white; font-weight: 700; font-size: 14px;
+  margin: 0 auto 10px;
+}
+.step h4 { font-size: 14px; margin-bottom: 4px; }
+.step p { font-size: 12px; color: #888; }
+/* ===== 关于我们 / 联系 ===== */
+.about-card {
+  background: white; border-radius: 16px; padding: 32px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  text-align: center;
+}
+.about-card .avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 28px; font-weight: 700;
+}
+.about-card h3 { font-size: 18px; margin-bottom: 4px; }
+.about-card .title-tag { font-size: 13px; color: #4f46e5; font-weight: 500; margin-bottom: 12px; }
+.about-card p { font-size: 14px; color: #666; max-width: 500px; margin: 0 auto 16px; }
+.contact-info {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px;
+}
+.contact-item { text-align: center; }
+.contact-item .label { font-size: 11px; color: #999; }
+.contact-item .value { font-size: 16px; font-weight: 600; color: #1a1a2e; }
+/* ===== CTA底部 ===== */
+.cta-section {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white; text-align: center; padding: 48px 20px;
+}
+.cta-section h2 { font-size: 24px; margin-bottom: 8px; }
+.cta-section p { font-size: 14px; opacity: 0.8; margin-bottom: 20px; }
+.cta-section .btn { background: white; color: #302b63; }
+.cta-section .btn:hover { background: #f0f0f0; }
+/* ===== Footer ===== */
+.footer { text-align: center; padding: 24px; font-size: 12px; color: #999; }
+/* ===== 支付弹窗 ===== */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: center;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: white; border-radius: 16px; padding: 32px 24px; max-width: 360px;
+  width: 90%; text-align: center; position: relative;
+}
+.modal h3 { font-size: 18px; margin-bottom: 8px; }
+.modal p { font-size: 13px; color: #666; margin-bottom: 16px; }
+.modal .qrcode-placeholder {
+  width: 200px; height: 200px; margin: 0 auto 16px;
+  background: #f5f5f5; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed #ddd; color: #999; font-size: 13px;
+}
+.modal .close-btn {
+  position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: #f0f0f0; cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  color: #666;
+}
+.modal .note { font-size: 12px; color: #999; }
+/* ===== 响应式 ===== */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 22px; }
+  .plan { min-width: 100%; }
+  .compare-header, .compare-row { grid-template-columns: 2fr 1fr 1fr 1fr; font-size: 12px; }
+  .compare-header :nth-child(2), .compare-header :nth-child(3), .compare-header :nth-child(4),
+  .compare-row :nth-child(2), .compare-row :nth-child(3), .compare-row :nth-child(4) { font-size: 11px; }
+  .step { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Hero Banner ===== -->
+<div class="hero">
+  <div class="brand">宇守信投资管理咨询（北京）有限公司</div>
+  <h1>企业财税顾问会员</h1>
+  <div class="subtitle">从日常合规到战略筹划 · 做您身边的财税专家</div>
+  <div class="tagline">您身边的财税专家 — 洪淳宇</div>
+</div>
+
+<!-- ===== 导航 ===== -->
+<div class="nav" id="nav">
+  <a href="#trial" class="active">单次体验</a>
+  <a href="#plans">会员方案</a>
+  <a href="#compare">服务对比</a>
+  <a href="#process">合作流程</a>
+  <a href="#about">关于我们</a>
+</div>
+
+<!-- ===== ¥999 单次体验卡（置顶引流） ===== -->
+<div class="section" id="trial" style="padding-top:20px;">
+  <div style="max-width:600px; margin:0 auto;">
+    <div style="background:linear-gradient(135deg, #f0f9ff, #e0f2fe); border:2px dashed #38bdf8; border-radius:16px; padding:32px 24px; text-align:center;">
+      <div style="font-size:14px; color:#0369a1; margin-bottom:6px;">🆕 新客户专享 · 无需年费</div>
+      <h3 style="font-size:28px; font-weight:800; color:#0c4a6e; margin-bottom:4px;">¥999 单次服务体验卡</h3>
+      <p style="font-size:14px; color:#0284c7; margin-bottom:16px;">花一杯茶钱，体验一次完整专业财税服务</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:20px;">
+        <span style="background:white; border-radius:20px; padding:6px 14px; font-size:12px; color:#0369a1; font-weight:500;">🔍 企业财务全面体检+报告解读</span>
+        <span style="background:white; border-radius:20px; padding:6px 14px; font-size:12px; color:#0369a1; font-weight:500;">📊 税负深度分析+优化建议</span>
+        <span style="background:white; border-radius:20px; padding:6px 14px; font-size:12px; color:#0369a1; font-weight:500;">⚠️ 稽查风险预评估</span>
+        <span style="background:white; border-radius:20px; padding:6px 14px; font-size:12px; color:#0369a1; font-weight:500;">📋 股权转让税务方案（简版）</span>
+        <span style="background:white; border-radius:20px; padding:6px 14px; font-size:12px; color:#0369a1; font-weight:500;">🧪 研发加计扣除申报辅导</span>
+      </div>
+      <p style="font-size:12px; color:#0891b2; margin-bottom:16px;">5大服务任选1项 · 含30分钟在线解读 · 不满意无条件退款</p>
+      <a href="javascript:void(0)" class="btn" style="display:inline-flex; align-items:center; gap:6px; background:#0284c7; color:white; font-size:16px; padding:14px 40px;" onclick="alert('请添加微信：hongchunyu042896 选择您需要的服务')">
+        💬 添加微信咨询
+      </a>
+      <p style="font-size:11px; color:#7dd3fc; margin-top:10px;">体验满意后，¥999可抵扣铜级/银级首年费用</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 会员方案 ===== -->
+<div class="section" id="plans">
+  <div class="section-title">
+    <h2>选择适合您的会员方案</h2>
+    <p>三档分级 · 按需选择 · 年费制服务</p>
+  </div>
+  <div class="plans">
+
+    <!-- 铜级 -->
+    <div class="plan">
+      <div class="plan-header">
+        <a href="https://sparrow528.github.io/copper-toolbox/" target="_blank" style="text-decoration:none;color:inherit;display:block;">
+        <div class="level copper">🥉 铜级 · 基础护航</div>
+        <div class="price">¥5,999 <small>/年</small></div>
+        <div class="unit">≈ ¥500/月</div>
+        <div class="target"><span style="background:#fef3c7; color:#b45309; padding:2px 8px; border-radius:4px; font-size:11px;">⛔ 年营收&lt;500万</span></div>
+        </a>
+      </div>
+      <div class="plan-body">
+        <ul>
+          <li><span class="icon">✓</span> 月度/季度纳税申报审核</li>
+          <li><span class="icon">✓</span> 发票使用合规性基础检查</li>
+          <li><span class="icon">✓</span> <b>3大铜级专属检测工具</b><br><span style="font-size:11px;color:#999">税务风险体检 · 利润税负测算 · 社保个税检查</span></li>
+          <li><span class="icon">✓</span> 重点风险预警</li>
+          <li><span class="icon">✓</span> 线上财税咨询（10次/年）</li>
+          <li><span class="icon">✓</span> 年度税务健康检查</li>
+          <li><span class="icon">✓</span> 财税政策月度简报</li>
+          <li><span class="icon">✓</span> 稽查初步应对话术指导</li>
+          <li><span class="icon">✓</span> 48小时内响应</li>
+          <li class="no"><span class="icon">✗</span> 上门服务</li>
+          <li class="no"><span class="icon">✗</span> 税负分析报告</li>
+          <li class="no"><span class="icon">✗</span> 专项筹划</li>
+        </ul>
+      </div>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="showModal('copper')">立即开通</button>
+      </div>
+    </div>
+
+    <!-- 银级 -->
+    <div class="plan popular">
+      <div class="badge">🔥 主力推荐</div>
+      <div class="plan-header">
+        <a href="https://sparrow528.github.io/silver-toolbox/" target="_blank" style="text-decoration:none;color:inherit;display:block;">
+        <div class="level silver">🥈 银级 · 专业合规</div>
+        <div class="price">¥29,999 <small>/年</small></div>
+        <div class="unit">≈ ¥2,500/月</div>
+        <div class="target">成长型企业 · 年营收 500万~5000万 · <span style="background:#e8f0fe; color:#1a73e8; padding:2px 8px; border-radius:4px; font-size:11px;">推荐</span></div>
+        </a>
+      </div>
+      <div class="plan-body">
+        <ul>
+          <li><span class="icon">✓</span> 铜级全部基础服务</li>
+          <li><span class="icon">✓</span> <b>6大银级专属检测工具</b><br><span style="font-size:11px;color:#999">税负自查·现金流·稽查自测·发票自检<br>汇算清缴·成本费用分析</span></li>
+          <li><span class="icon">✓</span> 增值税/所得税/附加税全流程复核</li>
+          <li><span class="icon">✓</span> 季度税负波动分析与优化建议报告</li>
+          <li><span class="icon">✓</span> 每季度1次上门（含凭证审核+模拟检查+季度会议）</li>
+          <li><span class="icon">✓</span> 代账公司记账凭证质量审核（季度）</li>
+          <li><span class="icon">✓</span> 财务制度初建</li>
+          <li><span class="icon">✓</span> 专项筹划（每年2项，任选）</li>
+          <li><span class="icon">✓</span> 协助准备稽查备查资料（线上指导）</li>
+          <li><span class="icon">✓</span> 年度模拟税务检查</li>
+          <li><span class="icon">✓</span> 7×12小时专属顾问群（8:00~20:00）</li>
+          <li><span class="icon">✓</span> 季度财税风险报告</li>
+          <li><span class="icon">✓</span> 线上财税咨询不限次</li>
+          <li><span class="icon">✓</span> 24小时内响应</li>
+        </ul>
+      </div>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="showModal('silver')">咨询开通</button>
+      </div>
+    </div>
+
+    <!-- 金级 -->
+    <div class="plan">
+      <div class="plan-header">
+        <a href="https://sparrow528.github.io/gold-toolbox/" target="_blank" style="text-decoration:none;color:inherit;display:block;">
+        <div class="level gold">🥇 金级 · 战略增长</div>
+        <div class="price">¥69,999 <small>/年</small></div>
+        <div class="unit">≈ ¥5,833/月</div>
+        <div class="target">成熟企业 · 年营收 5000万+</div>
+        </a>
+      </div>
+      <div class="plan-body">
+        <ul>
+          <li><span class="icon">✓</span> 银级全部核心服务</li>
+          <li><span class="icon">✓</span> <b>11大金级专属检测工具</b><br><span style="font-size:11px;color:#999">股权架构·并购重组·跨境税务·研发全流程<br>个税优化·稽查预案·内控自评·税收优惠等</span></li>
+          <li><span class="icon">✓</span> 股权架构设计与优化</li>
+          <li><span class="icon">✓</span> 业务分拆/合并税务路径规划</li>
+          <li><span class="icon">✓</span> 员工股权激励（ESOP）税务方案</li>
+          <li><span class="icon">✓</span> 并购重组税务尽调（轻量版）</li>
+          <li><span class="icon">✓</span> 投融资协议税务条款审阅</li>
+          <li><span class="icon">✓</span> 7×12小时专属顾问群（8:00~20:00,全年无休）</li>
+          <li><span class="icon">✓</span> 紧急事项4小时书面意见（Word/PDF）</li>
+          <li><span class="icon">✓</span> 专项筹划（每年2项，8选2）</li>
+          <li><span class="icon">✓</span> 税务稽查现场陪护（差旅另计）</li>
+          <li><span class="icon">✓</span> 高管财税内训（每年2次）</li>
+          <li><span class="icon">✓</span> 年度税务风险内控手册（10~20页）</li>
+        </ul>
+      </div>
+      <div class="plan-footer">
+        <button class="btn btn-primary" onclick="showModal('gold')">咨询开通</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 服务对比表 ===== -->
+<div class="section" id="compare">
+  <div class="section-title">
+    <h2>全服务对比</h2>
+    <p>一目了然 · 各等级服务差异</p>
+  </div>
+  <div class="compare-section">
+    <div class="compare-header">
+      <span>服务项目</span>
+      <span style="color:#b45309">🥉铜级</span>
+      <span style="color:#64748b">🥈银级</span>
+      <span style="color:#b8860b">🥇金级</span>
+    </div>
+    <div class="compare-row"><span class="service-name">纳税申报审核</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">铜级专属检测工具（3个）</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">银级专属检测工具（6个）</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">金级专属检测工具（11个）</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">发票合规性检查</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">重点风险预警</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">线上财税咨询</span><span class="detail">10次/年</span><span class="yes">不限次</span><span class="yes">不限次+紧急4h书面意见</span></div>
+    <div class="compare-row"><span class="service-name">上门服务</span><span class="no">—</span><span class="detail">季度1次</span><span class="detail">每月1次</span></div>
+    <div class="compare-row"><span class="service-name">税负分析报告</span><span class="no">—</span><span class="detail">季度</span><span class="detail">季度</span></div>
+    <div class="compare-row"><span class="service-name">财税风险报告</span><span class="no">—</span><span class="detail">季度</span><span class="detail">季度</span></div>
+    <div class="compare-row"><span class="service-name">专项筹划</span><span class="no">—</span><span class="detail">2项/年</span><span class="detail">2项/年</span></div>
+    <div class="compare-row"><span class="service-name">年度内控手册</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">稽查现场陪护</span><span class="no">—</span><span class="no">—</span><span class="detail">✓（差旅另计）</span></div>
+    <div class="compare-row"><span class="service-name">高管内训</span><span class="no">—</span><span class="no">—</span><span class="detail">2次/年</span></div>
+    <div class="compare-row"><span class="service-name">年度税务健康检查</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">财税政策月度简报</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">稽查应对话术指导</span><span class="yes">✓</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">响应时效</span><span class="detail">48h</span><span class="detail">24h</span><span class="detail">4h紧急</span></div>
+    <div class="compare-row"><span class="service-name">增值税/所得税全流程复核</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">季度税负分析与优化建议</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">财务制度初建</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">代账公司凭证质量审核</span><span class="no">—</span><span class="detail">季度</span><span class="detail">季度</span></div>
+    <div class="compare-row"><span class="service-name">模拟税务检查</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">股权架构设计与优化</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">业务分拆/合并税务路径</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">ESOP股权激励税务方案</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">投融资协议税务审阅</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">并购重组税务尽调</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">7×12小时专属顾问群</span><span class="no">—</span><span class="yes">✓</span><span class="yes">✓</span></div>
+    <div class="compare-row"><span class="service-name">紧急事项4小时书面意见</span><span class="no">—</span><span class="no">—</span><span class="yes">✓</span></div>
+  </div>
+</div>
+
+<!-- ===== 合作流程 ===== -->
+<div class="section" id="process">
+  <div class="section-title">
+    <h2>合作流程</h2>
+    <p>简单四步，开启专业财税服务</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>初步接洽</h4>
+      <p>免费沟通需求，了解企业基本情况</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>方案定制</h4>
+      <p>银级/金级进行财税风险初诊，出具定制方案</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>签约付款</h4>
+      <p>签订服务协议+保密协议，完成付款</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>持续服务</h4>
+      <p>按等级交付服务，季度/年度复盘</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 关于我们 ===== -->
+<div class="section" id="about">
+  <div class="about-card">
+    <div class="avatar">洪</div>
+    <h3>洪淳宇</h3>
+    <div class="title-tag">您身边的财税专家</div>
+    <p>专注为企业提供财税合规检查、税负优化、税务筹划、稽查应对等全方位服务。从初创小微到拟上市企业，量身定制财税解决方案，助力企业稳健发展。</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="label">📱 电话</div>
+        <div class="value">186-0129-4989</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">💬 微信</div>
+        <div class="value">hongchunyu042896</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">🏢 公司</div>
+        <div class="value" style="font-size:13px">宇守信投资管理咨询（北京）有限公司</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cta-section">
+  <h2>让专业财税顾问为您的企业保驾护航</h2>
+  <p>添加微信 hongchunyu042896，免费咨询适合您的会员方案</p>
+  <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://sparrow528.github.io/checkup/" class="btn" target="_blank">👉 共享 · 财务健康体检</a>
+  <a href="https://sparrow528.github.io/tax-checkup/" class="btn" target="_blank">👉 共享 · 企业税负自查</a>
+  <a href="https://sparrow528.github.io/rd-checkup/" class="btn" target="_blank">👉 共享 · 研发费用自查</a>
+  <a href="https://sparrow528.github.io/invoice-red-line/" class="btn" target="_blank">👉 共享 · 发票正负面清单自查</a>
+    <a href="https://sparrow528.github.io/radar-chart/" class="btn" target="_blank">👉 共享 · 财税雷达图</a>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+  <p>宇守信投资管理咨询（北京）有限公司 © 2026</p>
+  <p style="margin-top:4px">洪淳宇 · 您身边的财税专家</p>
+</div>
+
+<!-- ===== 支付弹窗 ===== -->
+<div class="modal-overlay" id="modalCopper">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('copper')">×</button>
+    <h3>🥉 铜级 · 基础护航</h3>
+    <p>年费 ¥5,999 · 扫码付款后请添加微信确认</p>
+    <div class="qrcode-placeholder">
+      微信收款码<br>（待上传）
+    </div>
+    <p style="font-size:14px; font-weight:600; color:#4f46e5;">👇 扫码支付后请加微信确认</p>
+    <div class="contact-info" style="margin-top:8px;">
+      <div class="contact-item">
+        <div class="label">微信</div>
+        <div class="value" style="font-size:14px;">hongchunyu042896</div>
+      </div>
+    </div>
+    <div class="note">💰 付款后发送截图至微信，我们将在24小时内为您开通服务</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalSilver">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('silver')">×</button>
+    <h3>🥈 银级 · 专业合规</h3>
+    <p>年费 ¥29,999 · 对公转账/签订合同</p>
+    <div style="background:#f5f7fa; border-radius:12px; padding:20px; margin:16px 0; text-align:left; font-size:13px; line-height:2;">
+      <p>📋 <strong>开通流程：</strong></p>
+      <p>1. 添加微信沟通需求</p>
+      <p>2. 财税风险初诊</p>
+      <p>3. 签订服务协议+保密协议</p>
+      <p>4. 对公付款，开具发票</p>
+      <p>5. 开始提供服务</p>
+    </div>
+    <a href="javascript:void(0)" class="btn btn-primary" style="display:inline-block;" onclick="alert('请添加微信：hongchunyu042896')">📱 添加微信咨询</a>
+    <p style="margin-top:12px; font-size:12px; color:#888;">或致电 186-0129-4989 沟通方案</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalGold">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal('gold')">×</button>
+    <h3>🥇 金级 · 战略增长</h3>
+    <p>年费 ¥69,999 · 对公转账/签订合同</p>
+    <div style="background:#f5f7fa; border-radius:12px; padding:20px; margin:16px 0; text-align:left; font-size:13px; line-height:2;">
+      <p>📋 <strong>开通流程：</strong></p>
+      <p>1. 添加微信初步沟通</p>
+      <p>2. 财税风险深度初诊</p>
+      <p>3. 定制战略级服务方案</p>
+      <p>4. 签订服务协议+NDA保密协议</p>
+      <p>5. 对公付款，开具发票</p>
+      <p>6. 成立专属顾问群，启动服务</p>
+    </div>
+    <a href="javascript:void(0)" class="btn btn-primary" style="display:inline-block;" onclick="alert('请添加微信：hongchunyu042896')">📱 添加微信咨询</a>
+    <p style="margin-top:12px; font-size:12px; color:#888;">或致电 186-0129-4989 预约面谈</p>
+  </div>
+</div>
+
+<script>
+// 导航滚动高亮
+const sections = document.querySelectorAll('.section, .cta-section');
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.offsetTop - 120;
+    if (window.scrollY >= top) current = s.id || '';
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// 弹窗控制
+function showModal(level) {
+  document.getElementById('modal' + level.charAt(0).toUpperCase() + level.slice(1)).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(level) {
+  document.getElementById('modal' + level.charAt(0).toUpperCase() + level.slice(1)).classList.remove('active');
+  document.body.style.overflow = '';
+}
+// 点击遮罩关闭
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// 平滑滚动
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
